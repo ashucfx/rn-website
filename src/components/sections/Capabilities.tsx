@@ -287,7 +287,7 @@ export const Capabilities: React.FC = () => {
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
             <div>
               <div className="text-xs font-mono text-[#00D2FF] tracking-widest uppercase mb-2">
-                // PRODUCTION BLUEPRINTS
+                {"// PRODUCTION BLUEPRINTS"}
               </div>
               <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
                 ARCHITECTURAL SCHEMATICS &amp; TOPOLOGY

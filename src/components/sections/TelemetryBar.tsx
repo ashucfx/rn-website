@@ -65,7 +65,7 @@ export const TelemetryBar: React.FC = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
           <div>
             <div className="text-xs font-mono text-[#00D2FF] tracking-widest uppercase mb-2">
-              // QUANTITATIVE SYSTEM PROOF
+              {"// QUANTITATIVE SYSTEM PROOF"}
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
               HARD METRICS. ZERO THEORETICAL CLAIMS.
