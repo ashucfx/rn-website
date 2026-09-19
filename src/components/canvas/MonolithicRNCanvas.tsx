@@ -32,11 +32,11 @@ export const MonolithicRNCanvas: React.FC<MonolithicRNCanvasProps> = ({ classNam
       const canvas = document.createElement("canvas");
       const gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
       if (!gl) {
-        setWebglSupported(false);
+        requestAnimationFrame(() => setWebglSupported(false));
         return;
       }
     } catch {
-      setWebglSupported(false);
+      requestAnimationFrame(() => setWebglSupported(false));
       return;
     }
 
@@ -265,7 +265,7 @@ export const MonolithicRNCanvas: React.FC<MonolithicRNCanvasProps> = ({ classNam
 
     // 7. Animation Loop with Kinetic Concentric Wave Physics
     let animationFrameId: number;
-    let clock = new THREE.Clock();
+    const clock = new THREE.Clock();
 
     const animate = () => {
       animationFrameId = requestAnimationFrame(animate);
