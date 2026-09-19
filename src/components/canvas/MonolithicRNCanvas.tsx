@@ -265,12 +265,12 @@ export const MonolithicRNCanvas: React.FC<MonolithicRNCanvasProps> = ({ classNam
 
     // 7. Animation Loop with Kinetic Concentric Wave Physics
     let animationFrameId: number;
-    let clock = new THREE.Clock();
+    const startTime = performance.now();
 
     const animate = () => {
       animationFrameId = requestAnimationFrame(animate);
 
-      const elapsedTime = clock.getElapsedTime();
+      const elapsedTime = (performance.now() - startTime) * 0.001;
 
       // Damped mouse inertia: lerp(current, target, 0.05)
       mouseCurrentX += (mouseTargetX - mouseCurrentX) * 0.05;

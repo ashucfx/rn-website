@@ -26,6 +26,13 @@ export const IntakeEngine: React.FC = () => {
   const [submitted, setSubmitted] = useState<boolean>(false);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [briefId, setBriefId] = useState<string>("");
+  const [mounted, setMounted] = useState<boolean>(false);
+  const [clientTimestamp, setClientTimestamp] = useState<string>("2026-09-19T00:00:00.000Z");
+
+  React.useEffect(() => {
+    setMounted(true);
+    setClientTimestamp(new Date().toISOString());
+  }, []);
 
   const orgId = useId();
   const emailId = useId();
@@ -63,7 +70,7 @@ export const IntakeEngine: React.FC = () => {
   const generatedJson = JSON.stringify(
     {
       $schema: "urn:nexus:spec:v4:architectural_brief",
-      timestamp: new Date().toISOString(),
+      timestamp: mounted ? clientTimestamp : "2026-09-19T00:00:00.000Z",
       entity: {
         organization: formData.organization || "[AWAITING_INPUT]",
         lead_contact: formData.leadEmail || "[AWAITING_INPUT]",
@@ -374,8 +381,8 @@ export const IntakeEngine: React.FC = () => {
                 <span className="text-[#00D2FF]">BYTES: {generatedJson.length}</span>
               </div>
 
-              <pre className="text-[#8A99AD]">
-                <code>
+              <pre className="text-[#8A99AD]" suppressHydrationWarning>
+                <code suppressHydrationWarning>
                   {generatedJson.split("\n").map((line, i) => {
                     const isKey = line.includes('":');
                     return (
