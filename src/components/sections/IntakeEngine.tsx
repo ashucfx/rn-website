@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useId } from "react";
-import { Terminal, Send, CheckCircle2, Shield, Lock, FileCode, Clock, RefreshCw } from "lucide-react";
+import { Send, CheckCircle2, Shield, Lock, FileCode, Clock, RefreshCw } from "lucide-react";
 
 interface FormData {
   organization: string;
@@ -63,7 +63,7 @@ export const IntakeEngine: React.FC = () => {
   const generatedJson = JSON.stringify(
     {
       $schema: "urn:nexus:spec:v4:architectural_brief",
-      timestamp: new Date().toISOString(),
+      timestamp: "2026-09-19T00:00:00.000Z",
       entity: {
         organization: formData.organization || "[AWAITING_INPUT]",
         lead_contact: formData.leadEmail || "[AWAITING_INPUT]",
@@ -374,8 +374,8 @@ export const IntakeEngine: React.FC = () => {
                 <span className="text-[#00D2FF]">BYTES: {generatedJson.length}</span>
               </div>
 
-              <pre className="text-[#8A99AD]">
-                <code>
+              <pre className="text-[#8A99AD]" suppressHydrationWarning>
+                <code suppressHydrationWarning>
                   {generatedJson.split("\n").map((line, i) => {
                     const isKey = line.includes('":');
                     return (

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import * as THREE from "three";
 
 interface MonolithicRNCanvasProps {
@@ -10,7 +11,15 @@ interface MonolithicRNCanvasProps {
 export const MonolithicRNCanvas: React.FC<MonolithicRNCanvasProps> = ({ className = "" }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState<boolean>(false);
-  const [webglSupported, setWebglSupported] = useState<boolean>(true);
+  const [webglSupported] = useState<boolean>(() => {
+    if (typeof window === "undefined") return true;
+    try {
+      const canvas = document.createElement("canvas");
+      return Boolean(canvas.getContext("webgl") || canvas.getContext("experimental-webgl"));
+    } catch {
+      return false;
+    }
+  });
 
   useEffect(() => {
     // Check mobile screen
@@ -25,20 +34,7 @@ export const MonolithicRNCanvas: React.FC<MonolithicRNCanvasProps> = ({ classNam
 
   useEffect(() => {
     const container = containerRef.current;
-    if (!container) return;
-
-    // Check WebGL context support
-    try {
-      const canvas = document.createElement("canvas");
-      const gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
-      if (!gl) {
-        requestAnimationFrame(() => setWebglSupported(false));
-        return;
-      }
-    } catch {
-      requestAnimationFrame(() => setWebglSupported(false));
-      return;
-    }
+    if (!container || !webglSupported) return;
 
     const width = container.clientWidth || 500;
     const height = container.clientHeight || 500;
@@ -265,12 +261,12 @@ export const MonolithicRNCanvas: React.FC<MonolithicRNCanvasProps> = ({ classNam
 
     // 7. Animation Loop with Kinetic Concentric Wave Physics
     let animationFrameId: number;
-    const clock = new THREE.Clock();
+    const startTime = performance.now();
 
     const animate = () => {
       animationFrameId = requestAnimationFrame(animate);
 
-      const elapsedTime = clock.getElapsedTime();
+      const elapsedTime = (performance.now() - startTime) * 0.001;
 
       // Damped mouse inertia: lerp(current, target, 0.05)
       mouseCurrentX += (mouseTargetX - mouseCurrentX) * 0.05;
@@ -341,7 +337,7 @@ export const MonolithicRNCanvas: React.FC<MonolithicRNCanvasProps> = ({ classNam
         container.removeChild(renderer.domElement);
       }
     };
-  }, []);
+  }, [webglSupported]);
 
   return (
     <div className={`relative w-full h-full flex items-center justify-center ${className}`}>
@@ -356,9 +352,11 @@ export const MonolithicRNCanvas: React.FC<MonolithicRNCanvasProps> = ({ classNam
         /* Mobile/WebGL Fallback */
         <div className="relative w-full h-[420px] flex flex-col items-center justify-center">
           <div className="relative w-72 h-72 animate-pulse-slow">
-            <img
+            <Image
               src="/assets/rn-mark.svg"
               alt="Ripple Nexus Monogram"
+              width={288}
+              height={288}
               className="w-full h-full object-contain filter drop-shadow-[0_0_35px_rgba(0,82,255,0.4)]"
             />
           </div>

@@ -1,13 +1,10 @@
 "use client";
 
 import React from "react";
-import { ShieldCheck, Users, Code, Clock, Lock, CheckCircle2, ChevronRight } from "lucide-react";
+import Image from "next/image";
+import { ShieldCheck, Users, Code, Clock } from "lucide-react";
 
 export const Governance: React.FC = () => {
-  const scrollToBrief = () => {
-    const el = document.getElementById("brief-intake");
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
 
   return (
     <section id="governance" className="relative py-24 bg-[#0A0D12] border-t border-[#1F2633] overflow-hidden">
@@ -55,9 +52,11 @@ export const Governance: React.FC = () => {
             </div>
 
             <div className="relative w-full rounded-lg bg-[#0A0D12] border border-[#1F2633] p-2 overflow-hidden aspect-[16/10] flex items-center justify-center">
-              <img
+              <Image
                 src="/assets/hitl-governance.svg"
                 alt="Human-in-the-Loop AI Verification Gate"
+                width={800}
+                height={500}
                 className="w-full h-full object-contain"
               />
             </div>
@@ -84,9 +83,11 @@ export const Governance: React.FC = () => {
             </div>
 
             <div className="relative w-full rounded-lg bg-[#0A0D12] border border-[#1F2633] p-2 overflow-hidden aspect-[16/10] flex items-center justify-center">
-              <img
+              <Image
                 src="/assets/war-room.svg"
                 alt="Collaborative Systems Engineering War Room"
+                width={800}
+                height={500}
                 className="w-full h-full object-contain"
               />
             </div>

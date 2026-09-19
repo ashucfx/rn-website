@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { Server, BrainCircuit, CloudCog, ShieldCheck, CheckCircle2, ArrowRight, Eye } from "lucide-react";
+import Image from "next/image";
+import { Server, BrainCircuit, CloudCog, CheckCircle2, ArrowRight, Eye } from "lucide-react";
 
 interface SchematicTab {
   id: string;
@@ -348,9 +349,11 @@ export const Capabilities: React.FC = () => {
 
             {/* SVG Visual Graphic Display */}
             <div className="relative w-full aspect-[16/10] sm:aspect-[16/9] max-h-[580px] bg-[#0A0D12] flex items-center justify-center p-2 sm:p-4 overflow-hidden">
-              <img
+              <Image
                 src={selectedSchematic.assetPath}
                 alt={selectedSchematic.title}
+                width={1200}
+                height={675}
                 className="w-full h-full object-contain filter contrast-[1.03]"
               />
             </div>

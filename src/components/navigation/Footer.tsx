@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 import { ShieldCheck, Lock } from "lucide-react";
 import { LegalDocType } from "@/components/legal/LegalModal";
 
@@ -9,7 +10,6 @@ interface FooterProps {
 }
 
 export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
-  const [mounted, setMounted] = useState<boolean>(false);
   const [timezones, setTimezones] = useState({
     utc: "12:00:00",
     nyc: "08:00:00",
@@ -19,7 +19,6 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
   });
 
   useEffect(() => {
-    requestAnimationFrame(() => setMounted(true));
     const updateTimes = () => {
       const now = new Date();
       setTimezones({
@@ -30,7 +29,6 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
         sgp: now.toLocaleTimeString("en-US", { timeZone: "Asia/Singapore", hour12: false }),
       });
     };
-    updateTimes();
     const interval = setInterval(updateTimes, 1000);
     return () => clearInterval(interval);
   }, []);
@@ -52,7 +50,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
           <div className="p-3 rounded bg-[#141923] border border-[#1F2633]">
             <div className="text-[10px] font-mono text-[#8A99AD] tracking-wider">TIMEZONE // UTC</div>
             <div className="text-sm font-mono text-[#00D2FF] font-semibold mt-1" suppressHydrationWarning>
-              {mounted ? timezones.utc : "00:00:00"}
+              {timezones.utc}
             </div>
             <div className="text-[9px] font-mono text-[#8A99AD]/70 mt-0.5">COORD_TIME</div>
           </div>
@@ -60,7 +58,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
           <div className="p-3 rounded bg-[#141923] border border-[#1F2633]">
             <div className="text-[10px] font-mono text-[#8A99AD] tracking-wider">EAST // US-EAST (NYC)</div>
             <div className="text-sm font-mono text-white font-semibold mt-1" suppressHydrationWarning>
-              {mounted ? timezones.nyc : "00:00:00"}
+              {timezones.nyc}
             </div>
             <div className="text-[9px] font-mono text-[#00D2FF] mt-0.5">PRIMARY_CORE</div>
           </div>
@@ -68,7 +66,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
           <div className="p-3 rounded bg-[#141923] border border-[#1F2633]">
             <div className="text-[10px] font-mono text-[#8A99AD] tracking-wider">WEST // US-WEST (SFO)</div>
             <div className="text-sm font-mono text-white font-semibold mt-1" suppressHydrationWarning>
-              {mounted ? timezones.sfo : "00:00:00"}
+              {timezones.sfo}
             </div>
             <div className="text-[9px] font-mono text-[#8A99AD]/70 mt-0.5">EDGE_CLUSTER</div>
           </div>
@@ -76,7 +74,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
           <div className="p-3 rounded bg-[#141923] border border-[#1F2633]">
             <div className="text-[10px] font-mono text-[#8A99AD] tracking-wider">EMEA // EU-WEST (LON)</div>
             <div className="text-sm font-mono text-white font-semibold mt-1" suppressHydrationWarning>
-              {mounted ? timezones.lon : "00:00:00"}
+              {timezones.lon}
             </div>
             <div className="text-[9px] font-mono text-[#8A99AD]/70 mt-0.5">WARM_STANDBY</div>
           </div>
@@ -84,7 +82,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
           <div className="p-3 rounded bg-[#141923] border border-[#1F2633] col-span-2 sm:col-span-1">
             <div className="text-[10px] font-mono text-[#8A99AD] tracking-wider">APAC // AP-SE (SGP)</div>
             <div className="text-sm font-mono text-white font-semibold mt-1" suppressHydrationWarning>
-              {mounted ? timezones.sgp : "00:00:00"}
+              {timezones.sgp}
             </div>
             <div className="text-[9px] font-mono text-[#0052FF] mt-0.5">TRANSIT_MESH</div>
           </div>
@@ -96,9 +94,11 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
           <div className="md:col-span-5 flex flex-col gap-4">
             <div className="flex items-center gap-3">
               <div className="w-8 h-8 rounded bg-[#141923] border border-[#1F2633] flex items-center justify-center p-1.5">
-                <img
+                <Image
                   src="/assets/rn-mark.svg"
                   alt="Ripple Nexus Monogram"
+                  width={32}
+                  height={32}
                   className="w-full h-full object-contain"
                 />
               </div>

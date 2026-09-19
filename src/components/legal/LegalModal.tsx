@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import { X, ShieldCheck, Lock, FileText, CheckCircle2, Copy, Check } from "lucide-react";
 
 export type LegalDocType = "privacy" | "terms" | "security" | "cookies";
@@ -54,7 +55,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({
         <div className="px-6 py-4 bg-[#0A0D12] border-b border-[#1F2633] flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-7 h-7 rounded bg-[#141923] border border-[#1F2633] flex items-center justify-center p-1">
-              <img src="/assets/rn-mark.svg" alt="Ripple Nexus" className="w-full h-full object-contain" />
+              <Image src="/assets/rn-mark.svg" alt="Ripple Nexus" width={28} height={28} className="w-full h-full object-contain" />
             </div>
             <div>
               <div className="flex items-center gap-2">
