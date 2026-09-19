@@ -27,18 +27,18 @@ export const Navbar: React.FC = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[#0A0D12]/90 backdrop-blur-md border-b border-[#1F2633] shadow-[0_4px_30px_rgba(0,0,0,0.8)]"
-          : "bg-[#0A0D12]/60 backdrop-blur-sm border-b border-transparent"
+          ? "bg-[#0A0D12]/92 backdrop-blur-md border-b border-[#1F2633] shadow-[0_4px_30px_rgba(0,0,0,0.85)]"
+          : "bg-[#0A0D12]/70 backdrop-blur-sm border-b border-[#1F2633]/50"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-        {/* Left: Brand Identity & Monogram Lockup */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+        {/* Left: Master Monogram & Brand Lockup */}
         <a
           href="#"
-          className="flex items-center gap-3 group focus:outline-none"
+          className="flex items-center gap-3.5 group flex-shrink-0 focus:outline-none"
           aria-label="Ripple Nexus Home"
         >
-          <div className="relative w-9 h-9 flex-shrink-0 bg-[#141923] border border-[#1F2633] rounded flex items-center justify-center p-1.5 transition-colors duration-200 group-hover:border-[#0052FF]">
+          <div className="relative w-9 h-9 bg-[#141923] border border-[#1F2633] rounded flex items-center justify-center p-1.5 transition-all duration-200 group-hover:border-[#0052FF] group-hover:shadow-[0_0_15px_rgba(0,82,255,0.3)]">
             <img
               src="/assets/rn-mark.svg"
               alt="Ripple Nexus Monogram"
@@ -47,59 +47,54 @@ export const Navbar: React.FC = () => {
           </div>
 
           <div className="flex flex-col">
-            <div className="flex items-center gap-2">
-              <span className="font-sans font-extrabold text-base tracking-[0.18em] text-white group-hover:text-[#00D2FF] transition-colors">
-                RIPPLE NEXUS
-              </span>
-              <span className="hidden md:inline-flex items-center px-1.5 py-0.5 rounded bg-[#141923] border border-[#1F2633] text-[9px] font-mono tracking-widest text-[#00D2FF]">
-                ENTERPRISE
-              </span>
-            </div>
-            <span className="hidden sm:block text-[10px] font-mono tracking-[0.14em] text-[#8A99AD] -mt-0.5 uppercase">
-              Production Systems &amp; AI Infra
+            <span className="font-sans font-extrabold text-sm sm:text-base tracking-[0.18em] text-white group-hover:text-[#00D2FF] transition-colors whitespace-nowrap">
+              RIPPLE NEXUS
+            </span>
+            <span className="text-[9px] font-mono tracking-[0.14em] text-[#8A99AD] uppercase whitespace-nowrap">
+              SYSTEMS ARCHITECTURE &amp; AI INFRA
             </span>
           </div>
         </a>
 
-        {/* Center: System Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-8">
+        {/* Center: System Navigation Links (Prevent line-wrap with whitespace-nowrap) */}
+        <nav className="hidden lg:flex items-center gap-5 xl:gap-8 flex-shrink-0">
           <button
             onClick={() => scrollToSection("capabilities")}
-            className="flex items-center gap-2 text-xs font-mono tracking-wider text-[#8A99AD] hover:text-white transition-colors"
+            className="flex items-center gap-1.5 text-xs font-mono tracking-wider text-[#8A99AD] hover:text-white transition-colors whitespace-nowrap group"
           >
-            <Cpu className="w-3.5 h-3.5 text-[#0052FF]" />
+            <Cpu className="w-3.5 h-3.5 text-[#0052FF] group-hover:text-[#00D2FF] transition-colors" />
             <span>CAPABILITIES</span>
           </button>
 
           <button
             onClick={() => scrollToSection("schematics")}
-            className="flex items-center gap-2 text-xs font-mono tracking-wider text-[#8A99AD] hover:text-white transition-colors"
+            className="flex items-center gap-1.5 text-xs font-mono tracking-wider text-[#8A99AD] hover:text-white transition-colors whitespace-nowrap group"
           >
-            <Activity className="w-3.5 h-3.5 text-[#00D2FF]" />
+            <Activity className="w-3.5 h-3.5 text-[#00D2FF] transition-colors" />
             <span>SCHEMATICS</span>
           </button>
 
           <button
             onClick={() => scrollToSection("governance")}
-            className="flex items-center gap-2 text-xs font-mono tracking-wider text-[#8A99AD] hover:text-white transition-colors"
+            className="flex items-center gap-1.5 text-xs font-mono tracking-wider text-[#8A99AD] hover:text-white transition-colors whitespace-nowrap group"
           >
-            <Shield className="w-3.5 h-3.5 text-[#0052FF]" />
+            <Shield className="w-3.5 h-3.5 text-[#0052FF] group-hover:text-[#00D2FF] transition-colors" />
             <span>HITL GOVERNANCE</span>
           </button>
 
           <button
             onClick={() => scrollToSection("telemetry")}
-            className="flex items-center gap-2 text-xs font-mono tracking-wider text-[#8A99AD] hover:text-white transition-colors"
+            className="flex items-center gap-1.5 text-xs font-mono tracking-wider text-[#8A99AD] hover:text-white transition-colors whitespace-nowrap group"
           >
-            <Terminal className="w-3.5 h-3.5 text-[#00D2FF]" />
+            <Terminal className="w-3.5 h-3.5 text-[#00D2FF] transition-colors" />
             <span>TELEMETRY</span>
           </button>
         </nav>
 
         {/* Right: Telemetry Live Status Pill & CTA */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3 xl:gap-4 flex-shrink-0">
           {/* Live Telemetry Pill */}
-          <div className="hidden xl:flex items-center gap-2 px-3 py-1.5 rounded bg-[#141923] border border-[#1F2633]">
+          <div className="hidden xl:flex items-center gap-2 px-3 py-1.5 rounded bg-[#141923] border border-[#1F2633] whitespace-nowrap">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00D2FF] opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00D2FF]"></span>
@@ -112,7 +107,7 @@ export const Navbar: React.FC = () => {
           {/* Primary CTA: Smooth Scrolls to Intake Engine */}
           <button
             onClick={() => scrollToSection("brief-intake")}
-            className="relative inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded bg-[#0052FF] text-white text-xs font-mono font-semibold tracking-wider hover:bg-[#0043d1] transition-all duration-200 shadow-[0_0_20px_rgba(0,82,255,0.4)] hover:shadow-[0_0_30px_rgba(0,82,255,0.6)] active:scale-[0.98]"
+            className="relative inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded bg-[#0052FF] text-white text-xs font-mono font-semibold tracking-wider hover:bg-[#0043d1] transition-all duration-200 shadow-[0_0_20px_rgba(0,82,255,0.4)] hover:shadow-[0_0_30px_rgba(0,82,255,0.6)] active:scale-[0.98] whitespace-nowrap"
           >
             <span>REQUEST 48-HOUR BRIEF</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -144,7 +139,7 @@ export const Navbar: React.FC = () => {
 
           <button
             onClick={() => scrollToSection("capabilities")}
-            className="flex items-center justify-between py-2 text-sm font-mono tracking-wider text-[#8A99AD] hover:text-white"
+            className="flex items-center justify-between py-2 text-sm font-mono tracking-wider text-[#8A99AD] hover:text-white text-left"
           >
             <span>01 // CAPABILITIES</span>
             <ArrowRight className="w-4 h-4 text-[#0052FF]" />
@@ -152,7 +147,7 @@ export const Navbar: React.FC = () => {
 
           <button
             onClick={() => scrollToSection("schematics")}
-            className="flex items-center justify-between py-2 text-sm font-mono tracking-wider text-[#8A99AD] hover:text-white"
+            className="flex items-center justify-between py-2 text-sm font-mono tracking-wider text-[#8A99AD] hover:text-white text-left"
           >
             <span>02 // SCHEMATICS &amp; TOPOLOGY</span>
             <ArrowRight className="w-4 h-4 text-[#00D2FF]" />
@@ -160,7 +155,7 @@ export const Navbar: React.FC = () => {
 
           <button
             onClick={() => scrollToSection("governance")}
-            className="flex items-center justify-between py-2 text-sm font-mono tracking-wider text-[#8A99AD] hover:text-white"
+            className="flex items-center justify-between py-2 text-sm font-mono tracking-wider text-[#8A99AD] hover:text-white text-left"
           >
             <span>03 // HITL GOVERNANCE</span>
             <ArrowRight className="w-4 h-4 text-[#0052FF]" />
@@ -168,7 +163,7 @@ export const Navbar: React.FC = () => {
 
           <button
             onClick={() => scrollToSection("telemetry")}
-            className="flex items-center justify-between py-2 text-sm font-mono tracking-wider text-[#8A99AD] hover:text-white"
+            className="flex items-center justify-between py-2 text-sm font-mono tracking-wider text-[#8A99AD] hover:text-white text-left"
           >
             <span>04 // SYSTEMS TELEMETRY</span>
             <ArrowRight className="w-4 h-4 text-[#00D2FF]" />
