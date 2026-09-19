@@ -110,7 +110,7 @@ export const Hero: React.FC = () => {
 
               {/* Top Bar Spec */}
               <div className="absolute top-2 left-4 text-[10px] font-mono text-[#8A99AD] tracking-widest">
-                GEOMETRY: MONOLITHIC_RN_v4 // TITANIUM CORE
+                {"GEOMETRY: MONOLITHIC_RN_v4 // TITANIUM CORE"}
               </div>
             </div>
 

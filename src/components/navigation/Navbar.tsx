@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import { Terminal, Shield, Cpu, Activity, Menu, X, ArrowRight } from "lucide-react";
 
 export const Navbar: React.FC = () => {
@@ -39,9 +40,11 @@ export const Navbar: React.FC = () => {
           aria-label="Ripple Nexus Home"
         >
           <div className="relative w-9 h-9 bg-[#141923] border border-[#1F2633] rounded flex items-center justify-center p-1.5 transition-all duration-200 group-hover:border-[#0052FF] group-hover:shadow-[0_0_15px_rgba(0,82,255,0.3)]">
-            <img
+            <Image
               src="/assets/rn-mark.svg"
               alt="Ripple Nexus Monogram"
+              width={36}
+              height={36}
               className="w-full h-full object-contain"
             />
           </div>

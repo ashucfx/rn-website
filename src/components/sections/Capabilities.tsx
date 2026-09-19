@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { Server, BrainCircuit, CloudCog, ShieldCheck, CheckCircle2, ArrowRight, Eye } from "lucide-react";
+import Image from "next/image";
+import { Server, BrainCircuit, CloudCog, CheckCircle2, ArrowRight, Eye } from "lucide-react";
 
 interface SchematicTab {
   id: string;
@@ -287,7 +288,7 @@ export const Capabilities: React.FC = () => {
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
             <div>
               <div className="text-xs font-mono text-[#00D2FF] tracking-widest uppercase mb-2">
-                // PRODUCTION BLUEPRINTS
+                {"// PRODUCTION BLUEPRINTS"}
               </div>
               <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
                 ARCHITECTURAL SCHEMATICS &amp; TOPOLOGY
@@ -348,9 +349,11 @@ export const Capabilities: React.FC = () => {
 
             {/* SVG Visual Graphic Display */}
             <div className="relative w-full aspect-[16/10] sm:aspect-[16/9] max-h-[580px] bg-[#0A0D12] flex items-center justify-center p-2 sm:p-4 overflow-hidden">
-              <img
+              <Image
                 src={selectedSchematic.assetPath}
                 alt={selectedSchematic.title}
+                width={1200}
+                height={675}
                 className="w-full h-full object-contain filter contrast-[1.03]"
               />
             </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import { X, ShieldCheck, Lock, FileText, CheckCircle2, Copy, Check } from "lucide-react";
 
 export type LegalDocType = "privacy" | "terms" | "security" | "cookies";
@@ -16,12 +17,14 @@ export const LegalModal: React.FC<LegalModalProps> = ({
   initialTab = "privacy",
   onClose,
 }) => {
+  const [prevInitialTab, setPrevInitialTab] = useState<LegalDocType>(initialTab);
   const [activeTab, setActiveTab] = useState<LegalDocType>(initialTab);
   const [copied, setCopied] = useState<boolean>(false);
 
-  useEffect(() => {
+  if (initialTab !== prevInitialTab) {
+    setPrevInitialTab(initialTab);
     setActiveTab(initialTab);
-  }, [initialTab]);
+  }
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -53,7 +56,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({
         <div className="px-6 py-4 bg-[#0A0D12] border-b border-[#1F2633] flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-7 h-7 rounded bg-[#141923] border border-[#1F2633] flex items-center justify-center p-1">
-              <img src="/assets/rn-mark.svg" alt="Ripple Nexus" className="w-full h-full object-contain" />
+              <Image src="/assets/rn-mark.svg" alt="Ripple Nexus" width={28} height={28} className="w-full h-full object-contain" />
             </div>
             <div>
               <div className="flex items-center gap-2">
@@ -168,7 +171,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({
                 <p>
                   Zero customer code, database schemas, or brief submissions are ever ingested into
                   public language models or used to train third-party foundation models. All AI
-                  infrastructure provisioned for clients resides exclusively inside the client's
+                  infrastructure provisioned for clients resides exclusively inside the client&apos;s
                   private VPC with dedicated KMS encryption keys.
                 </p>
               </div>
