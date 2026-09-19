@@ -17,14 +17,13 @@ export const LegalModal: React.FC<LegalModalProps> = ({
   initialTab = "privacy",
   onClose,
 }) => {
-  const [prevInitialTab, setPrevInitialTab] = useState<LegalDocType>(initialTab);
   const [activeTab, setActiveTab] = useState<LegalDocType>(initialTab);
   const [copied, setCopied] = useState<boolean>(false);
 
-  if (initialTab !== prevInitialTab) {
-    setPrevInitialTab(initialTab);
-    setActiveTab(initialTab);
-  }
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => setActiveTab(initialTab));
+    return () => cancelAnimationFrame(frame);
+  }, [initialTab]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
