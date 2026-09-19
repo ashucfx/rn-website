@@ -82,12 +82,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark scroll-smooth">
+    <html lang="en" className="dark scroll-smooth" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/assets/rn-mark.svg" type="image/svg+xml" />
       </head>
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} antialiased bg-[#0A0D12] text-white selection:bg-[#0052FF] selection:text-white min-h-screen flex flex-col`}
+        suppressHydrationWarning
       >
         {children}
       </body>
