@@ -19,7 +19,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
   });
 
   useEffect(() => {
-    setMounted(true);
+    requestAnimationFrame(() => setMounted(true));
     const updateTimes = () => {
       const now = new Date();
       setTimezones({
@@ -134,7 +134,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
           {/* Architectural Pillars */}
           <div className="md:col-span-3 flex flex-col gap-3">
             <h4 className="text-xs font-mono tracking-widest text-[#00D2FF] uppercase">
-              // CORE DOMAINS
+              {"// CORE DOMAINS"}
             </h4>
             <ul className="space-y-2 text-xs text-[#8A99AD] font-mono">
               <li className="hover:text-white transition-colors cursor-default flex items-center gap-2">
@@ -163,7 +163,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
           {/* Institutional Compliance & Governance */}
           <div className="md:col-span-4 flex flex-col gap-3">
             <h4 className="text-xs font-mono tracking-widest text-[#00D2FF] uppercase">
-              // LEGAL &amp; GOVERNANCE ENCLAVE
+              {"// LEGAL & GOVERNANCE ENCLAVE"}
             </h4>
             <div className="p-4 rounded bg-[#141923] border border-[#1F2633] space-y-2.5">
               <div className="flex items-center justify-between text-xs">
@@ -210,9 +210,9 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] font-mono text-[#8A99AD]">
           <div className="flex items-center gap-3">
             <span>&copy; {new Date().getFullYear()} RIPPLE NEXUS</span>
-            <span>//</span>
+            <span>{"//"}</span>
             <span>ALL RIGHTS RESERVED</span>
-            <span>//</span>
+            <span>{"//"}</span>
             <span className="text-[#00D2FF]">STRICT ZERO-TRUST POLICY</span>
           </div>
 

@@ -20,7 +20,8 @@ export const LegalModal: React.FC<LegalModalProps> = ({
   const [copied, setCopied] = useState<boolean>(false);
 
   useEffect(() => {
-    setActiveTab(initialTab);
+    const frame = requestAnimationFrame(() => setActiveTab(initialTab));
+    return () => cancelAnimationFrame(frame);
   }, [initialTab]);
 
   useEffect(() => {
@@ -168,7 +169,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({
                 <p>
                   Zero customer code, database schemas, or brief submissions are ever ingested into
                   public language models or used to train third-party foundation models. All AI
-                  infrastructure provisioned for clients resides exclusively inside the client's
+                  infrastructure provisioned for clients resides exclusively inside the client&apos;s
                   private VPC with dedicated KMS encryption keys.
                 </p>
               </div>

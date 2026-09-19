@@ -125,7 +125,7 @@ export const IntakeEngine: React.FC = () => {
                 </div>
 
                 <div className="text-xs font-mono text-[#00D2FF] tracking-widest uppercase mb-2">
-                  // BRIEF INGESTION CONFIRMED
+                  {"// BRIEF INGESTION CONFIRMED"}
                 </div>
 
                 <h3 className="text-2xl font-bold text-white mb-2">
@@ -370,7 +370,7 @@ export const IntakeEngine: React.FC = () => {
             {/* Code Output Window */}
             <div className="p-4 sm:p-6 overflow-x-auto text-xs font-mono leading-relaxed bg-[#0A0D12] min-h-[420px]">
               <div className="text-[11px] text-[#8A99AD] mb-3 pb-2 border-b border-[#1F2633]/60 flex items-center justify-between">
-                <span>// REAL-TIME PAYLOAD GENERATION BUFFER</span>
+                <span>{"// REAL-TIME PAYLOAD GENERATION BUFFER"}</span>
                 <span className="text-[#00D2FF]">BYTES: {generatedJson.length}</span>
               </div>
 
