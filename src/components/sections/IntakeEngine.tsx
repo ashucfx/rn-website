@@ -13,12 +13,12 @@ interface FormData {
 }
 
 const INITIAL_FORM: FormData = {
-  organization: "Acme Enterprises",
-  leadEmail: "cto@acme.corp",
+  organization: "",
+  leadEmail: "",
   domain: "multi_tenant_saas",
   throughput: "high_throughput_500k",
   compliance: "soc2_hipaa",
-  coreObjective: "Architect sub-25ms event mesh with private vector RAG and zero cross-tenant contamination.",
+  coreObjective: "",
 };
 
 export const IntakeEngine: React.FC = () => {
@@ -58,19 +58,21 @@ export const IntakeEngine: React.FC = () => {
     setFormData(INITIAL_FORM);
   };
 
+  const isComplete = Boolean(formData.organization && formData.leadEmail && formData.coreObjective);
+
   const generatedJson = JSON.stringify(
     {
       $schema: "urn:nexus:spec:v4:architectural_brief",
       timestamp: new Date().toISOString(),
       entity: {
-        organization: formData.organization || "ANONYMOUS_TENANT",
-        lead_contact: formData.leadEmail || "PENDING_VERIFICATION",
+        organization: formData.organization || "[AWAITING_INPUT]",
+        lead_contact: formData.leadEmail || "[AWAITING_INPUT]",
       },
       specification: {
         target_domain: formData.domain,
         target_throughput: formData.throughput,
         compliance_regime: formData.compliance,
-        problem_statement: formData.coreObjective,
+        problem_statement: formData.coreObjective || "[AWAITING_INPUT]",
       },
       sla_guarantee: {
         written_brief_turnaround: "48_HOURS",
@@ -78,9 +80,9 @@ export const IntakeEngine: React.FC = () => {
         nda_auto_execution: "MUTUAL_STRICT",
       },
       telemetry_state: {
-        schema_valid: true,
+        schema_valid: isComplete,
         enclave_ready: true,
-        verification_status: "AWAITING_COMMIT",
+        verification_status: isComplete ? "READY_FOR_SYNTHESIS" : "AWAITING_PARAMETERS",
       },
     },
     null,
@@ -123,7 +125,7 @@ export const IntakeEngine: React.FC = () => {
                 </div>
 
                 <div className="text-xs font-mono text-[#00D2FF] tracking-widest uppercase mb-2">
-                  {"// BRIEF INGESTION CONFIRMED"}
+                  // BRIEF INGESTION CONFIRMED
                 </div>
 
                 <h3 className="text-2xl font-bold text-white mb-2">
@@ -368,7 +370,7 @@ export const IntakeEngine: React.FC = () => {
             {/* Code Output Window */}
             <div className="p-4 sm:p-6 overflow-x-auto text-xs font-mono leading-relaxed bg-[#0A0D12] min-h-[420px]">
               <div className="text-[11px] text-[#8A99AD] mb-3 pb-2 border-b border-[#1F2633]/60 flex items-center justify-between">
-                <span>{"// REAL-TIME PAYLOAD GENERATION BUFFER"}</span>
+                <span>// REAL-TIME PAYLOAD GENERATION BUFFER</span>
                 <span className="text-[#00D2FF]">BYTES: {generatedJson.length}</span>
               </div>
 

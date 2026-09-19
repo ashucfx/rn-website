@@ -97,7 +97,7 @@ export const Governance: React.FC = () => {
         <div className="mt-8 pt-12 border-t border-[#1F2633]">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="text-xs font-mono text-[#00D2FF] tracking-widest uppercase">
-              {"// INSTITUTIONAL TRUST ARCHITECTURE"}
+              // INSTITUTIONAL TRUST ARCHITECTURE
             </span>
             <h3 className="text-2xl sm:text-3xl font-extrabold text-white mt-2 tracking-tight">
               THE 4 RISK-REVERSAL PILLARS
