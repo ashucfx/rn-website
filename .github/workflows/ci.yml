@@ -1,0 +1,41 @@
+name: Enterprise Quality Gate & CI Pipeline
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Type-Check, Lint & Build Verification
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: 01. Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 02. Setup Node.js 20 LTS
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+
+      - name: 03. Install Dependencies
+        run: npm ci
+
+      - name: 04. Strict Static Type Checking
+        run: npx tsc --noEmit
+
+      - name: 05. ESLint Code Quality Gate
+        run: npm run lint
+
+      - name: 06. Next.js Production Build Verification
+        run: npm run build
+        env:
+          NODE_ENV: production
