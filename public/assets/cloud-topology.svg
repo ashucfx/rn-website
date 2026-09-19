@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="cloudCardBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1A212E" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#141923" stop-opacity="0.95"/>
+    </linearGradient>
+    <pattern id="cloudGrid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#1F2633" stroke-width="0.8" opacity="0.4"/>
+    </pattern>
+  </defs>
+
+  <rect width="1000" height="600" fill="#0A0D12"/>
+  <rect width="1000" height="600" fill="url(#cloudGrid)"/>
+
+  <!-- Telemetry Header -->
+  <text x="40" y="44" font-family="'JetBrains Mono', monospace" font-size="11" fill="#00D2FF" letter-spacing="3">CLOUD_TOPOLOGY // MULTI-TENANT VPC &amp; K8S HA ARCHITECTURE</text>
+  <text x="760" y="44" font-family="'JetBrains Mono', monospace" font-size="11" fill="#8A99AD" letter-spacing="2">ACTIVE-ACTIVE MULTI-REGION</text>
+  <line x1="40" y1="58" x2="960" y2="58" stroke="#1F2633" stroke-width="1"/>
+
+  <!-- Ingress Layer -->
+  <g transform="translate(60, 100)">
+    <rect width="880" height="70" rx="6" fill="url(#cloudCardBg)" stroke="#0052FF" stroke-width="1.5"/>
+    <text x="24" y="28" font-family="'JetBrains Mono', monospace" font-size="10" fill="#00D2FF">TIER 0 // EDGE ANYCAST</text>
+    <text x="24" y="52" font-family="'Inter', sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">Global Anycast DNS + Envoy WAF Edge Mesh</text>
+    <text x="560" y="42" font-family="'JetBrains Mono', monospace" font-size="11" fill="#8A99AD">BGP ANYCAST // SSL TERMINATION // DDOS 40TBPS</text>
+  </g>
+
+  <!-- Region 1 & Region 2 Container boxes -->
+  <g transform="translate(60, 200)">
+    <!-- Region US-East -->
+    <rect width="420" height="230" rx="8" fill="#141923" stroke="#1F2633" stroke-width="1.5"/>
+    <rect x="0" y="0" width="420" height="4" rx="2" fill="#0052FF"/>
+    <text x="20" y="30" font-family="'JetBrains Mono', monospace" font-size="11" fill="#00D2FF">REGION: US-EAST-1 (PRIMARY)</text>
+    
+    <!-- Tenant Pod 1 -->
+    <g transform="translate(20, 50)">
+      <rect width="180" height="90" rx="4" fill="#1A212E" stroke="#1F2633"/>
+      <text x="12" y="24" font-family="'Inter', sans-serif" font-size="12" font-weight="700" fill="#FFFFFF">Tenant A Cluster</text>
+      <text x="12" y="44" font-family="'JetBrains Mono', monospace" font-size="9" fill="#8A99AD">Dedicated K8s Pods</text>
+      <text x="12" y="62" font-family="'JetBrains Mono', monospace" font-size="9" fill="#00D2FF">mTLS Istio Mesh</text>
+      <text x="12" y="80" font-family="'JetBrains Mono', monospace" font-size="9" fill="#8A99AD">CPU: 8 vCPU // 32GB</text>
+    </g>
+
+    <!-- Tenant Pod 2 -->
+    <g transform="translate(220, 50)">
+      <rect width="180" height="90" rx="4" fill="#1A212E" stroke="#1F2633"/>
+      <text x="12" y="24" font-family="'Inter', sans-serif" font-size="12" font-weight="700" fill="#FFFFFF">Tenant B Cluster</text>
+      <text x="12" y="44" font-family="'JetBrains Mono', monospace" font-size="9" fill="#8A99AD">Dedicated K8s Pods</text>
+      <text x="12" y="62" font-family="'JetBrains Mono', monospace" font-size="9" fill="#00D2FF">mTLS Istio Mesh</text>
+      <text x="12" y="80" font-family="'JetBrains Mono', monospace" font-size="9" fill="#8A99AD">CPU: 16 vCPU // 64GB</text>
+    </g>
+
+    <!-- Aurora Storage East -->
+    <g transform="translate(20, 160)">
+      <rect width="380" height="50" rx="4" fill="#0A0D12" stroke="#0052FF"/>
+      <text x="16" y="30" font-family="'Inter', sans-serif" font-size="12" font-weight="700" fill="#FFFFFF">PostgreSQL Aurora Multi-AZ (Write Master)</text>
+      <text x="260" y="30" font-family="'JetBrains Mono', monospace" font-size="10" fill="#00D2FF">RPO: 0 // RTO: &lt;10S</text>
+    </g>
+  </g>
+
+  <g transform="translate(520, 200)">
+    <!-- Region EU-Central -->
+    <rect width="420" height="230" rx="8" fill="#141923" stroke="#1F2633" stroke-width="1.5"/>
+    <rect x="0" y="0" width="420" height="4" rx="2" fill="#00D2FF"/>
+    <text x="20" y="30" font-family="'JetBrains Mono', monospace" font-size="11" fill="#00D2FF">REGION: EU-CENTRAL-1 (HOT REPLICA)</text>
+    
+    <!-- Tenant Pod 1 EU -->
+    <g transform="translate(20, 50)">
+      <rect width="180" height="90" rx="4" fill="#1A212E" stroke="#1F2633"/>
+      <text x="12" y="24" font-family="'Inter', sans-serif" font-size="12" font-weight="700" fill="#FFFFFF">Tenant A Replica</text>
+      <text x="12" y="44" font-family="'JetBrains Mono', monospace" font-size="9" fill="#8A99AD">Stateless Pods</text>
+      <text x="12" y="62" font-family="'JetBrains Mono', monospace" font-size="9" fill="#00D2FF">Failover Warm</text>
+      <text x="12" y="80" font-family="'JetBrains Mono', monospace" font-size="9" fill="#8A99AD">CPU: 8 vCPU // 32GB</text>
+    </g>
+
+    <!-- Tenant Pod 2 EU -->
+    <g transform="translate(220, 50)">
+      <rect width="180" height="90" rx="4" fill="#1A212E" stroke="#1F2633"/>
+      <text x="12" y="24" font-family="'Inter', sans-serif" font-size="12" font-weight="700" fill="#FFFFFF">Tenant B Replica</text>
+      <text x="12" y="44" font-family="'JetBrains Mono', monospace" font-size="9" fill="#8A99AD">Stateless Pods</text>
+      <text x="12" y="62" font-family="'JetBrains Mono', monospace" font-size="9" fill="#00D2FF">Failover Warm</text>
+      <text x="12" y="80" font-family="'JetBrains Mono', monospace" font-size="9" fill="#8A99AD">CPU: 16 vCPU // 64GB</text>
+    </g>
+
+    <!-- Aurora Storage EU -->
+    <g transform="translate(20, 160)">
+      <rect width="380" height="50" rx="4" fill="#0A0D12" stroke="#00D2FF"/>
+      <text x="16" y="30" font-family="'Inter', sans-serif" font-size="12" font-weight="700" fill="#FFFFFF">PostgreSQL Aurora Multi-AZ (Global Read Replica)</text>
+      <text x="270" y="30" font-family="'JetBrains Mono', monospace" font-size="10" fill="#00D2FF">LAG: &lt;12MS</text>
+    </g>
+  </g>
+
+  <!-- Cross-Region Replication Link -->
+  <line x1="480" y1="385" x2="520" y2="385" stroke="#00D2FF" stroke-width="2" stroke-dasharray="4 2"/>
+
+  <!-- Footer Specs -->
+  <rect x="60" y="460" width="880" height="80" rx="6" fill="#1A212E" stroke="#1F2633"/>
+  <text x="84" y="495" font-family="'Inter', sans-serif" font-size="13" font-weight="700" fill="#FFFFFF">INFRASTRUCTURE AS CODE (TERRAFORM + HELM 100% OWNED)</text>
+  <text x="84" y="520" font-family="'Inter', sans-serif" font-size="12" fill="#8A99AD">Full git repository handover. Multi-region automated deployments, self-healing node groups, zero cloud-vendor lock-in.</text>
+  <circle cx="860" cy="500" r="5" fill="#00D2FF"/>
+  <text x="874" y="504" font-family="'JetBrains Mono', monospace" font-size="11" fill="#00D2FF">99.999% SLA</text>
+</svg>

@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 640" width="100%" height="100%">
+  <defs>
+    <linearGradient id="meshGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0052FF" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#00D2FF" stop-opacity="0.3"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1A212E" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#141923" stop-opacity="0.95"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <pattern id="gridPattern" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1F2633" stroke-width="1" stroke-opacity="0.4"/>
+    </pattern>
+  </defs>
+
+  <!-- Background Ground Canvas -->
+  <rect width="1000" height="640" fill="#0A0D12"/>
+  <rect width="1000" height="640" fill="url(#gridPattern)"/>
+
+  <!-- Telemetry Header Header Line -->
+  <text x="40" y="44" font-family="'JetBrains Mono', monospace" font-size="11" fill="#00D2FF" letter-spacing="3">SYSTEM_TOPOLOGY // DETERMINISTIC EVENT MESH</text>
+  <text x="820" y="44" font-family="'JetBrains Mono', monospace" font-size="11" fill="#8A99AD" letter-spacing="2">LATENCY: &lt;14.2MS</text>
+  <line x1="40" y1="58" x2="960" y2="58" stroke="#1F2633" stroke-width="1"/>
+
+  <!-- Background Signal Waveform Lines -->
+  <path d="M 120 320 Q 300 180 500 320 T 880 320" fill="none" stroke="#0052FF" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.4"/>
+  <path d="M 120 320 Q 300 460 500 320 T 880 320" fill="none" stroke="#00D2FF" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.3"/>
+
+  <!-- High Velocity Bus Line with Pulse -->
+  <line x1="180" y1="320" x2="820" y2="320" stroke="#0052FF" stroke-width="3" filter="url(#glow)"/>
+  <line x1="180" y1="320" x2="820" y2="320" stroke="#FFFFFF" stroke-width="1" opacity="0.8"/>
+
+  <!-- Ingress Tier (Left) -->
+  <g transform="translate(60, 240)">
+    <rect width="160" height="160" rx="8" fill="url(#cardGrad)" stroke="#1F2633" stroke-width="1.5"/>
+    <rect x="0" y="0" width="160" height="4" rx="2" fill="#0052FF"/>
+    <text x="18" y="32" font-family="'JetBrains Mono', monospace" font-size="11" fill="#00D2FF" letter-spacing="1">INGRESS_GATEWAY</text>
+    <text x="18" y="56" font-family="'Inter', sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">Anycast Edge</text>
+    <text x="18" y="78" font-family="'JetBrains Mono', monospace" font-size="10" fill="#8A99AD">TLS 1.3 // mTLS</text>
+    <text x="18" y="98" font-family="'JetBrains Mono', monospace" font-size="10" fill="#8A99AD">DDoS Shield v4</text>
+    <circle cx="26" cy="132" r="5" fill="#00D2FF"/>
+    <text x="38" y="136" font-family="'JetBrains Mono', monospace" font-size="10" fill="#00D2FF">480K REQ/SEC</text>
+  </g>
+
+  <!-- Connection to Central Spine -->
+  <path d="M 220 320 L 320 320" stroke="#00D2FF" stroke-width="2"/>
+  <circle cx="270" cy="320" r="4" fill="#00D2FF" filter="url(#glow)"/>
+
+  <!-- Node 2: Deterministic State Mesh (Center Left) -->
+  <g transform="translate(320, 160)">
+    <rect width="170" height="150" rx="8" fill="url(#cardGrad)" stroke="#0052FF" stroke-width="1.5"/>
+    <rect x="0" y="0" width="170" height="4" rx="2" fill="#0052FF"/>
+    <text x="16" y="30" font-family="'JetBrains Mono', monospace" font-size="10" fill="#00D2FF">NODE_CLUSTER // 01</text>
+    <text x="16" y="54" font-family="'Inter', sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">Event Partitioning</text>
+    <text x="16" y="76" font-family="'JetBrains Mono', monospace" font-size="10" fill="#8A99AD">Zero-Loss Kafka Mesh</text>
+    <text x="16" y="96" font-family="'JetBrains Mono', monospace" font-size="10" fill="#8A99AD">Strict Total Order</text>
+    <rect x="16" y="112" width="138" height="22" rx="4" fill="#0A0D12" stroke="#1F2633"/>
+    <text x="24" y="127" font-family="'JetBrains Mono', monospace" font-size="9" fill="#FFFFFF">SYNC_LAG: 0.00ms</text>
+  </g>
+
+  <!-- Node 3: Real-Time Vector Core (Center Right) -->
+  <g transform="translate(510, 160)">
+    <rect width="170" height="150" rx="8" fill="url(#cardGrad)" stroke="#1F2633" stroke-width="1.5"/>
+    <rect x="0" y="0" width="170" height="4" rx="2" fill="#00D2FF"/>
+    <text x="16" y="30" font-family="'JetBrains Mono', monospace" font-size="10" fill="#00D2FF">VECTOR_SUBSYSTEM</text>
+    <text x="16" y="54" font-family="'Inter', sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">Memory Index</text>
+    <text x="16" y="76" font-family="'JetBrains Mono', monospace" font-size="10" fill="#8A99AD">HNSW Distributed Graph</text>
+    <text x="16" y="96" font-family="'JetBrains Mono', monospace" font-size="10" fill="#8A99AD">Private KMS Enclave</text>
+    <rect x="16" y="112" width="138" height="22" rx="4" fill="#0A0D12" stroke="#1F2633"/>
+    <text x="24" y="127" font-family="'JetBrains Mono', monospace" font-size="9" fill="#00D2FF">DIM: 1536 // TOP_K: 8</text>
+  </g>
+
+  <!-- Bottom Node: Consensus Engine -->
+  <g transform="translate(415, 360)">
+    <rect width="170" height="150" rx="8" fill="url(#cardGrad)" stroke="#1F2633" stroke-width="1.5"/>
+    <rect x="0" y="0" width="170" height="4" rx="2" fill="#FFFFFF"/>
+    <text x="16" y="30" font-family="'JetBrains Mono', monospace" font-size="10" fill="#00D2FF">RAFT_CONSENSUS</text>
+    <text x="16" y="54" font-family="'Inter', sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">State Replication</text>
+    <text x="16" y="76" font-family="'JetBrains Mono', monospace" font-size="10" fill="#8A99AD">Quorum Verified</text>
+    <text x="16" y="96" font-family="'JetBrains Mono', monospace" font-size="10" fill="#8A99AD">3-Region Hot Standby</text>
+    <rect x="16" y="112" width="138" height="22" rx="4" fill="#0A0D12" stroke="#1F2633"/>
+    <text x="24" y="127" font-family="'JetBrains Mono', monospace" font-size="9" fill="#00D2FF">STATUS: HEALTHY 99.999%</text>
+  </g>
+
+  <!-- Connectors from Centers to Bottom -->
+  <path d="M 405 310 L 405 435 L 415 435" stroke="#0052FF" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <path d="M 595 310 L 595 435 L 585 435" stroke="#00D2FF" stroke-width="1.5" stroke-dasharray="3 3"/>
+
+  <!-- Egress Execution Tier (Right) -->
+  <g transform="translate(780, 240)">
+    <rect width="160" height="160" rx="8" fill="url(#cardGrad)" stroke="#1F2633" stroke-width="1.5"/>
+    <rect x="0" y="0" width="160" height="4" rx="2" fill="#0052FF"/>
+    <text x="18" y="32" font-family="'JetBrains Mono', monospace" font-size="11" fill="#00D2FF" letter-spacing="1">TENANT_DISPATCH</text>
+    <text x="18" y="56" font-family="'Inter', sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">Output Bus</text>
+    <text x="18" y="78" font-family="'JetBrains Mono', monospace" font-size="10" fill="#8A99AD">gRPC Streams</text>
+    <text x="18" y="98" font-family="'JetBrains Mono', monospace" font-size="10" fill="#8A99AD">Tenant Isolators</text>
+    <circle cx="26" cy="132" r="5" fill="#0052FF"/>
+    <text x="38" y="136" font-family="'JetBrains Mono', monospace" font-size="10" fill="#FFFFFF">EGRESS: 0 ERRORS</text>
+  </g>
+
+  <!-- Connectors -->
+  <path d="M 680 235 L 780 320" stroke="#00D2FF" stroke-width="1.5"/>
+  <path d="M 585 435 L 780 320" stroke="#0052FF" stroke-width="1.5"/>
+
+  <!-- Footer Telemetry -->
+  <line x1="40" y1="580" x2="960" y2="580" stroke="#1F2633" stroke-width="1"/>
+  <text x="40" y="606" font-family="'JetBrains Mono', monospace" font-size="10" fill="#8A99AD">ENCRYPTION: AES-256-GCM IN TRANSIT &amp; AT REST</text>
+  <text x="730" y="606" font-family="'JetBrains Mono', monospace" font-size="10" fill="#00D2FF">ISOLATION LEVEL: STRICT PHYSICAL TENANCY</text>
+</svg>

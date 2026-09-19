@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="ragCardBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1A212E" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#141923" stop-opacity="0.95"/>
+    </linearGradient>
+    <filter id="cyanGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <pattern id="ragGrid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#1F2633" stroke-width="0.8" opacity="0.4"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1000" height="600" fill="#0A0D12"/>
+  <rect width="1000" height="600" fill="url(#ragGrid)"/>
+
+  <!-- Telemetry Header -->
+  <text x="40" y="44" font-family="'JetBrains Mono', monospace" font-size="11" fill="#00D2FF" letter-spacing="3">RAG_ARCHITECTURE // ZERO-LEAKAGE PRIVATE VECTOR PIPELINE</text>
+  <text x="780" y="44" font-family="'JetBrains Mono', monospace" font-size="11" fill="#0052FF" letter-spacing="2">AIR-GAPPED COMPLIANCE</text>
+  <line x1="40" y1="58" x2="960" y2="58" stroke="#1F2633" stroke-width="1"/>
+
+  <!-- Step 1: Ingestion & Tokenization -->
+  <g transform="translate(40, 140)">
+    <rect width="150" height="240" rx="6" fill="url(#ragCardBg)" stroke="#1F2633" stroke-width="1.5"/>
+    <rect x="0" y="0" width="150" height="3" fill="#0052FF"/>
+    <text x="14" y="28" font-family="'JetBrains Mono', monospace" font-size="9" fill="#8A99AD">STAGE 01</text>
+    <text x="14" y="52" font-family="'Inter', sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">Private Ingest</text>
+    <text x="14" y="74" font-family="'JetBrains Mono', monospace" font-size="10" fill="#8A99AD">PDF / SQL / Docs</text>
+    <text x="14" y="92" font-family="'JetBrains Mono', monospace" font-size="10" fill="#8A99AD">PII Scrubbing</text>
+    <text x="14" y="110" font-family="'JetBrains Mono', monospace" font-size="10" fill="#8A99AD">SHA-256 Hashing</text>
+    <line x1="14" y1="130" x2="136" y2="130" stroke="#1F2633"/>
+    <text x="14" y="152" font-family="'JetBrains Mono', monospace" font-size="9" fill="#00D2FF">CHUNKING: SEMANTIC</text>
+    <text x="14" y="170" font-family="'JetBrains Mono', monospace" font-size="9" fill="#8A99AD">OVERLAP: 15%</text>
+    <rect x="14" y="196" width="122" height="26" rx="4" fill="#0A0D12" stroke="#1F2633"/>
+    <text x="24" y="213" font-family="'JetBrains Mono', monospace" font-size="9" fill="#FFFFFF">STATUS: VERIFIED</text>
+  </g>
+
+  <!-- Flow 1 to 2 -->
+  <line x1="190" y1="260" x2="230" y2="260" stroke="#00D2FF" stroke-width="2"/>
+  <polygon points="228,256 236,260 228,264" fill="#00D2FF"/>
+
+  <!-- Step 2: On-Prem Embedding Engine -->
+  <g transform="translate(230, 140)">
+    <rect width="150" height="240" rx="6" fill="url(#ragCardBg)" stroke="#0052FF" stroke-width="1.5"/>
+    <rect x="0" y="0" width="150" height="3" fill="#0052FF"/>
+    <text x="14" y="28" font-family="'JetBrains Mono', monospace" font-size="9" fill="#8A99AD">STAGE 02</text>
+    <text x="14" y="52" font-family="'Inter', sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">Embedding Core</text>
+    <text x="14" y="74" font-family="'JetBrains Mono', monospace" font-size="10" fill="#8A99AD">Custom BGE-M3</text>
+    <text x="14" y="92" font-family="'JetBrains Mono', monospace" font-size="10" fill="#8A99AD">Dense + Sparse</text>
+    <text x="14" y="110" font-family="'JetBrains Mono', monospace" font-size="10" fill="#8A99AD">FP16 TensorRT</text>
+    <line x1="14" y1="130" x2="136" y2="130" stroke="#1F2633"/>
+    <text x="14" y="152" font-family="'JetBrains Mono', monospace" font-size="9" fill="#00D2FF">DIM: 1536 VEC</text>
+    <text x="14" y="170" font-family="'JetBrains Mono', monospace" font-size="9" fill="#8A99AD">LATENCY: 4.8MS</text>
+    <rect x="14" y="196" width="122" height="26" rx="4" fill="#0A0D12" stroke="#1F2633"/>
+    <text x="24" y="213" font-family="'JetBrains Mono', monospace" font-size="9" fill="#00D2FF">ZERO DATA LEAK</text>
+  </g>
+
+  <!-- Flow 2 to 3 -->
+  <line x1="380" y1="260" x2="420" y2="260" stroke="#00D2FF" stroke-width="2"/>
+  <polygon points="418,256 426,260 418,264" fill="#00D2FF"/>
+
+  <!-- Step 3: Isolated Vector Mesh -->
+  <g transform="translate(420, 140)">
+    <rect width="160" height="240" rx="6" fill="url(#ragCardBg)" stroke="#1F2633" stroke-width="1.5"/>
+    <rect x="0" y="0" width="160" height="3" fill="#00D2FF"/>
+    <text x="14" y="28" font-family="'JetBrains Mono', monospace" font-size="9" fill="#8A99AD">STAGE 03</text>
+    <text x="14" y="52" font-family="'Inter', sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">Vector Mesh</text>
+    <text x="14" y="74" font-family="'JetBrains Mono', monospace" font-size="10" fill="#8A99AD">Partitioned Milvus</text>
+    <text x="14" y="92" font-family="'JetBrains Mono', monospace" font-size="10" fill="#8A99AD">HNSW Indexing</text>
+    <text x="14" y="110" font-family="'JetBrains Mono', monospace" font-size="10" fill="#8A99AD">Cosine Distance</text>
+    <line x1="14" y1="130" x2="146" y2="130" stroke="#1F2633"/>
+    <text x="14" y="152" font-family="'JetBrains Mono', monospace" font-size="9" fill="#00D2FF">TENANT-KEYED ACL</text>
+    <text x="14" y="170" font-family="'JetBrains Mono', monospace" font-size="9" fill="#8A99AD">RECALL: 99.4%</text>
+    <rect x="14" y="196" width="132" height="26" rx="4" fill="#0A0D12" stroke="#1F2633"/>
+    <text x="22" y="213" font-family="'JetBrains Mono', monospace" font-size="9" fill="#FFFFFF">RAM: 64GB MESH</text>
+  </g>
+
+  <!-- Flow 3 to 4 -->
+  <line x1="580" y1="260" x2="620" y2="260" stroke="#00D2FF" stroke-width="2"/>
+  <polygon points="618,256 626,260 618,264" fill="#00D2FF"/>
+
+  <!-- Step 4: Hybrid Reranker -->
+  <g transform="translate(620, 140)">
+    <rect width="160" height="240" rx="6" fill="url(#ragCardBg)" stroke="#1F2633" stroke-width="1.5"/>
+    <rect x="0" y="0" width="160" height="3" fill="#0052FF"/>
+    <text x="14" y="28" font-family="'JetBrains Mono', monospace" font-size="9" fill="#8A99AD">STAGE 04</text>
+    <text x="14" y="52" font-family="'Inter', sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">Cross-Reranker</text>
+    <text x="14" y="74" font-family="'JetBrains Mono', monospace" font-size="10" fill="#8A99AD">ColBERTv2 Cross-Attn</text>
+    <text x="14" y="92" font-family="'JetBrains Mono', monospace" font-size="10" fill="#8A99AD">Reciprocal Rank Fusion</text>
+    <text x="14" y="110" font-family="'JetBrains Mono', monospace" font-size="10" fill="#8A99AD">Context Pruning</text>
+    <line x1="14" y1="130" x2="146" y2="130" stroke="#1F2633"/>
+    <text x="14" y="152" font-family="'JetBrains Mono', monospace" font-size="9" fill="#00D2FF">TOP_K: 5 CHUNKS</text>
+    <text x="14" y="170" font-family="'JetBrains Mono', monospace" font-size="9" fill="#8A99AD">COMPRESSION: 70%</text>
+    <rect x="14" y="196" width="132" height="26" rx="4" fill="#0A0D12" stroke="#1F2633"/>
+    <text x="22" y="213" font-family="'JetBrains Mono', monospace" font-size="9" fill="#00D2FF">CONFIDENCE: 99.8%</text>
+  </g>
+
+  <!-- Flow 4 to 5 -->
+  <line x1="780" y1="260" x2="820" y2="260" stroke="#00D2FF" stroke-width="2"/>
+  <polygon points="818,256 826,260 818,264" fill="#00D2FF"/>
+
+  <!-- Step 5: Guardrail & Deterministic Synthesis -->
+  <g transform="translate(820, 140)">
+    <rect width="140" height="240" rx="6" fill="url(#ragCardBg)" stroke="#0052FF" stroke-width="1.5"/>
+    <rect x="0" y="0" width="140" height="3" fill="#FFFFFF"/>
+    <text x="14" y="28" font-family="'JetBrains Mono', monospace" font-size="9" fill="#8A99AD">STAGE 05</text>
+    <text x="14" y="52" font-family="'Inter', sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">Deterministic</text>
+    <text x="14" y="74" font-family="'JetBrains Mono', monospace" font-size="10" fill="#8A99AD">Hallucination Guard</text>
+    <text x="14" y="92" font-family="'JetBrains Mono', monospace" font-size="10" fill="#8A99AD">Strict Schema Output</text>
+    <text x="14" y="110" font-family="'JetBrains Mono', monospace" font-size="10" fill="#8A99AD">JSON Verification</text>
+    <line x1="14" y1="130" x2="126" y2="130" stroke="#1F2633"/>
+    <text x="14" y="152" font-family="'JetBrains Mono', monospace" font-size="9" fill="#00D2FF">HITL GATING: PASS</text>
+    <text x="14" y="170" font-family="'JetBrains Mono', monospace" font-size="9" fill="#8A99AD">AUDIT TRAIL: YES</text>
+    <rect x="14" y="196" width="112" height="26" rx="4" fill="#0052FF"/>
+    <text x="22" y="213" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" fill="#FFFFFF">PROD OUTPUT</text>
+  </g>
+
+  <!-- Bottom Details Bar -->
+  <rect x="40" y="440" width="920" height="90" rx="6" fill="#141923" stroke="#1F2633"/>
+  <text x="64" y="475" font-family="'Inter', sans-serif" font-size="13" font-weight="700" fill="#FFFFFF">ZERO DATA LEAKAGE PROTOCOL (ZDLP-4)</text>
+  <text x="64" y="498" font-family="'Inter', sans-serif" font-size="12" fill="#8A99AD">Every chunk is cryptographically tied to a tenant KMS key. Zero third-party model training. Enterprise compliance guaranteed.</text>
+  <rect x="800" y="465" width="140" height="40" rx="4" fill="#0A0D12" stroke="#00D2FF"/>
+  <text x="816" y="490" font-family="'JetBrains Mono', monospace" font-size="11" fill="#00D2FF">SOC 2 TYPE II</text>
+</svg>
