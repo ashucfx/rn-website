@@ -17,8 +17,63 @@ interface BriefPayload {
   coreObjective: string;
 }
 
+// In-memory sliding-window rate limiter: max 5 submissions per 10 minutes per IP
+interface RateLimitEntry {
+  timestamps: number[];
+}
+
+const rateLimitMap = new Map<string, RateLimitEntry>();
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000; // 10 minutes
+const MAX_REQUESTS_PER_WINDOW = 5;
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const entry = rateLimitMap.get(ip) || { timestamps: [] };
+
+  // Filter timestamps within the current window
+  const validTimestamps = entry.timestamps.filter((ts) => now - ts < RATE_LIMIT_WINDOW_MS);
+
+  if (validTimestamps.length >= MAX_REQUESTS_PER_WINDOW) {
+    return true;
+  }
+
+  validTimestamps.push(now);
+  rateLimitMap.set(ip, { timestamps: validTimestamps });
+
+  // Cleanup old entries periodically (every 50 entries)
+  if (rateLimitMap.size > 500) {
+    for (const [key, val] of rateLimitMap.entries()) {
+      if (val.timestamps.every((ts) => now - ts >= RATE_LIMIT_WINDOW_MS)) {
+        rateLimitMap.delete(key);
+      }
+    }
+  }
+
+  return false;
+}
+
 export async function POST(req: NextRequest) {
   try {
+    // 0. Anti-Abuse Rate Limiting Check
+    const clientIp =
+      req.headers.get("x-forwarded-for")?.split(",")[0].trim() ||
+      req.headers.get("x-real-ip") ||
+      "127.0.0.1";
+
+    if (isRateLimited(clientIp)) {
+      return NextResponse.json(
+        {
+          error: "Rate limit exceeded. Maximum 5 submissions per 10 minutes. Please try again later.",
+        },
+        {
+          status: 429,
+          headers: {
+            "Retry-After": "600",
+          },
+        },
+      );
+    }
+
     let body: Partial<BriefPayload>;
     try {
       body = (await req.json()) as Partial<BriefPayload>;
