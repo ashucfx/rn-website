@@ -32,14 +32,14 @@ export const Navbar: React.FC = () => {
           : "bg-[#0A0D12]/70 backdrop-blur-sm border-b border-[#1F2633]/50"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-2 sm:gap-4">
         {/* Left: Master Monogram & Brand Lockup */}
         <a
           href="#"
-          className="flex items-center gap-3.5 group flex-shrink-0 focus:outline-none"
+          className="flex items-center gap-2.5 sm:gap-3.5 group flex-shrink-0 focus:outline-none"
           aria-label="Ripple Nexus Home"
         >
-          <div className="relative w-9 h-9 bg-[#141923] border border-[#1F2633] rounded flex items-center justify-center p-1.5 transition-all duration-200 group-hover:border-[#0052FF] group-hover:shadow-[0_0_15px_rgba(0,82,255,0.3)]">
+          <div className="relative w-8 h-8 sm:w-9 sm:h-9 bg-[#141923] border border-[#1F2633] rounded flex items-center justify-center p-1.5 transition-all duration-200 group-hover:border-[#0052FF] group-hover:shadow-[0_0_15px_rgba(0,82,255,0.3)]">
             <Image
               src="/assets/rn-mark.svg"
               alt="Ripple Nexus Monogram"
@@ -50,10 +50,10 @@ export const Navbar: React.FC = () => {
           </div>
 
           <div className="flex flex-col">
-            <span className="font-sans font-extrabold text-sm sm:text-base tracking-[0.18em] text-white group-hover:text-[#00D2FF] transition-colors whitespace-nowrap">
+            <span className="font-sans font-extrabold text-xs sm:text-base tracking-[0.14em] sm:tracking-[0.18em] text-white group-hover:text-[#00D2FF] transition-colors whitespace-nowrap">
               RIPPLE NEXUS
             </span>
-            <span className="text-[9px] font-mono tracking-[0.14em] text-[#8A99AD] uppercase whitespace-nowrap">
+            <span className="hidden sm:block text-[9px] font-mono tracking-[0.14em] text-[#8A99AD] uppercase whitespace-nowrap">
               SYSTEMS ARCHITECTURE &amp; AI INFRA
             </span>
           </div>
@@ -95,7 +95,7 @@ export const Navbar: React.FC = () => {
         </nav>
 
         {/* Right: Telemetry Live Status Pill & CTA */}
-        <div className="flex items-center gap-3 xl:gap-4 flex-shrink-0">
+        <div className="flex items-center gap-2 sm:gap-3 xl:gap-4 flex-shrink-0">
           {/* Live Telemetry Pill */}
           <div className="hidden xl:flex items-center gap-2 px-3 py-1.5 rounded bg-[#141923] border border-[#1F2633] whitespace-nowrap">
             <span className="relative flex h-2 w-2">
@@ -110,9 +110,10 @@ export const Navbar: React.FC = () => {
           {/* Primary CTA: Smooth Scrolls to Intake Engine */}
           <button
             onClick={() => scrollToSection("brief-intake")}
-            className="relative inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded bg-[#0052FF] text-white text-xs font-mono font-semibold tracking-wider hover:bg-[#0043d1] transition-all duration-200 shadow-[0_0_20px_rgba(0,82,255,0.4)] hover:shadow-[0_0_30px_rgba(0,82,255,0.6)] active:scale-[0.98] whitespace-nowrap"
+            className="relative inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-5 py-2 sm:py-2.5 rounded bg-[#0052FF] text-white text-[11px] sm:text-xs font-mono font-semibold tracking-wider hover:bg-[#0043d1] transition-all duration-200 shadow-[0_0_20px_rgba(0,82,255,0.4)] hover:shadow-[0_0_30px_rgba(0,82,255,0.6)] active:scale-[0.98] whitespace-nowrap"
           >
-            <span>REQUEST 48-HOUR BRIEF</span>
+            <span className="hidden sm:inline">REQUEST 48-HOUR BRIEF</span>
+            <span className="inline sm:hidden">REQUEST BRIEF</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
 
