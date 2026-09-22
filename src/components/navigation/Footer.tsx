@@ -113,6 +113,16 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
               intellectual property handover.
             </p>
 
+            <div className="flex items-center gap-2 text-[11px] font-mono text-[#8A99AD] mt-1">
+              <span>CONTACT //</span>
+              <a
+                href="mailto:info@theripplenexus.com"
+                className="text-[#00D2FF] hover:text-white hover:underline transition-colors"
+              >
+                info@theripplenexus.com
+              </a>
+            </div>
+
             <div className="flex items-center gap-3 mt-2">
               <button
                 onClick={() => openTab("security")}

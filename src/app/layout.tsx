@@ -40,11 +40,11 @@ export const metadata: Metadata = {
   authors: [{ name: "Ripple Nexus Enterprise Engineering" }],
   creator: "Ripple Nexus",
   publisher: "Ripple Nexus",
-  metadataBase: new URL("https://ripplenexus.com"),
+  metadataBase: new URL("https://theripplenexus.com"),
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://ripplenexus.com",
+    url: "https://theripplenexus.com",
     siteName: "Ripple Nexus Enterprise Platform",
     title: "Ripple Nexus | Production Systems & Private AI Infrastructure",
     description:
@@ -80,8 +80,8 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "Ripple Nexus",
-  url: "https://ripplenexus.com",
-  logo: "https://ripplenexus.com/assets/rn-mark.svg",
+  url: "https://theripplenexus.com",
+  logo: "https://theripplenexus.com/assets/rn-mark.svg",
   description:
     "Enterprise distributed systems engineering, multi-tenant SaaS backbones, and private deterministic AI infrastructure.",
   knowsAbout: [

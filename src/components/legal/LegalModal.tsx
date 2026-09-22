@@ -182,7 +182,10 @@ export const LegalModal: React.FC<LegalModalProps> = ({
                 <p>
                   You retain the absolute legal right to demand complete cryptographic deletion of
                   your architectural brief and associated communication logs at any time by
-                  contacting our Security Enclave.
+                  contacting our Security Enclave directly at{" "}
+                  <a href="mailto:info@theripplenexus.com" className="text-[#00D2FF] hover:underline font-mono">
+                    info@theripplenexus.com
+                  </a>.
                 </p>
               </div>
             </div>
@@ -220,7 +223,10 @@ export const LegalModal: React.FC<LegalModalProps> = ({
                 <p>
                   Every engagement is automatically protected under standard bilateral enterprise
                   NDA terms. All disclosed systems architectures, throughput metrics, and business
-                  objectives remain strictly confidential in perpetuity.
+                  objectives remain strictly confidential in perpetuity. For formal executed bilateral agreements, email{" "}
+                  <a href="mailto:info@theripplenexus.com" className="text-[#00D2FF] hover:underline font-mono">
+                    info@theripplenexus.com
+                  </a>.
                 </p>
               </div>
 
@@ -268,7 +274,10 @@ export const LegalModal: React.FC<LegalModalProps> = ({
                 <p>
                   All cluster traffic is secured via mTLS 1.3 with automated certificate rotation.
                   All persistent storage volumes and vector memory clusters are encrypted with
-                  AES-256-GCM.
+                  AES-256-GCM. For compliance attestations or vendor security audits, contact{" "}
+                  <a href="mailto:info@theripplenexus.com" className="text-[#00D2FF] hover:underline font-mono">
+                    info@theripplenexus.com
+                  </a>.
                 </p>
               </div>
             </div>
@@ -303,7 +312,10 @@ export const LegalModal: React.FC<LegalModalProps> = ({
                 </h4>
                 <p>
                   Anonymous frame-rate and shader capability metrics collected strictly to optimize
-                  the 3D kinetic engine and scale particle budgets across mobile and desktop devices.
+                  the 3D kinetic engine and scale particle budgets across mobile and desktop devices. For privacy questions, reach us at{" "}
+                  <a href="mailto:info@theripplenexus.com" className="text-[#00D2FF] hover:underline font-mono">
+                    info@theripplenexus.com
+                  </a>.
                 </p>
               </div>
             </div>
@@ -319,7 +331,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({
 
           <div className="flex items-center gap-3">
             <button
-              onClick={() => copyToClipboard("https://ripplenexus.com/legal")}
+              onClick={() => copyToClipboard("https://theripplenexus.com/legal")}
               className="px-3 py-1.5 rounded bg-[#141923] border border-[#1F2633] hover:border-[#00D2FF] text-[#8A99AD] hover:text-white flex items-center gap-1.5 transition-colors"
             >
               {copied ? <Check className="w-3.5 h-3.5 text-[#00D2FF]" /> : <Copy className="w-3.5 h-3.5" />}
