@@ -174,39 +174,51 @@ export async function POST(req: NextRequest) {
 
     // 4. Transactional Email Dispatch (Resend integration if RESEND_API_KEY is configured)
     const resendApiKey = process.env.RESEND_API_KEY;
-    const notificationRecipient = process.env.ENGINEERING_ALERT_EMAIL || "briefs@ripplenexus.com";
+    const notificationRecipient = process.env.ENGINEERING_ALERT_EMAIL || "briefs@theripplenexus.com";
+    const emailSender = process.env.EMAIL_FROM || "Ripple Nexus Architecture <briefs@theripplenexus.com>";
+    const noReplySender = process.env.EMAIL_NOREPLY_FROM || "Ripple Nexus Platform <no-reply@theripplenexus.com>";
 
     if (resendApiKey) {
       try {
         // Confirmation to the Lead
-        await fetch("https://api.resend.com/emails", {
+        const leadRes = await fetch("https://api.resend.com/emails", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${resendApiKey}`,
           },
           body: JSON.stringify({
-            from: "Ripple Nexus Architecture <briefs@ripplenexus.com>",
+            from: emailSender,
             to: [briefData.leadEmail],
             subject: `[${briefId}] 48-Hour Written Architectural Brief Ingestion Receipt // RIPPLE NEXUS`,
             html: generateLeadConfirmationEmail(briefData),
           }),
         });
 
+        if (!leadRes.ok) {
+          const errData = await leadRes.json().catch(() => ({}));
+          console.error("[RESEND_LEAD_EMAIL_ERROR]", leadRes.status, errData);
+        }
+
         // Internal Alert to Engineering Team
-        await fetch("https://api.resend.com/emails", {
+        const internalRes = await fetch("https://api.resend.com/emails", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${resendApiKey}`,
           },
           body: JSON.stringify({
-            from: "Ripple Nexus Platform <no-reply@ripplenexus.com>",
+            from: noReplySender,
             to: [notificationRecipient],
             subject: `🚨 [48H SLA] New Architectural Brief: ${briefData.organization} (${briefId})`,
             html: generateInternalEngineeringAlertEmail(briefData),
           }),
         });
+
+        if (!internalRes.ok) {
+          const errData = await internalRes.json().catch(() => ({}));
+          console.error("[RESEND_INTERNAL_EMAIL_ERROR]", internalRes.status, errData);
+        }
       } catch (emailErr) {
         console.error("[EMAIL_DISPATCH_WARNING] Failed to dispatch transactional emails:", emailErr);
       }

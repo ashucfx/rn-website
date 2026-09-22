@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://ripplenexus.com";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://theripplenexus.com";
   const lastModified = new Date();
 
   return [
