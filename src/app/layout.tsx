@@ -76,6 +76,29 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Ripple Nexus",
+  url: "https://ripplenexus.com",
+  logo: "https://ripplenexus.com/assets/rn-mark.svg",
+  description:
+    "Enterprise distributed systems engineering, multi-tenant SaaS backbones, and private deterministic AI infrastructure.",
+  knowsAbout: [
+    "Distributed Systems Architecture",
+    "Private AI Infrastructure",
+    "Deterministic Vector RAG",
+    "Multi-Region Kubernetes VPC",
+    "Hardware HSM KMS Custody",
+  ],
+  offers: {
+    "@type": "Offer",
+    name: "48-Hour Written Architectural Brief",
+    description:
+      "Comprehensive actionable systems architecture specification delivered within 48 hours under mutual enterprise NDA.",
+  },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -85,6 +108,10 @@ export default function RootLayout({
     <html lang="en" className="dark scroll-smooth" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/assets/rn-mark.svg" type="image/svg+xml" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} antialiased bg-[#0A0D12] text-white selection:bg-[#0052FF] selection:text-white min-h-screen flex flex-col`}

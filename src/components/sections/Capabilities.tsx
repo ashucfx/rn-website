@@ -2,7 +2,16 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { Server, BrainCircuit, CloudCog, CheckCircle2, ArrowRight, Eye } from "lucide-react";
+import {
+  Server,
+  BrainCircuit,
+  CloudCog,
+  Workflow,
+  Rocket,
+  CheckCircle2,
+  ArrowRight,
+  Eye,
+} from "lucide-react";
 
 interface SchematicTab {
   id: string;
@@ -106,8 +115,8 @@ export const Capabilities: React.FC = () => {
           </p>
         </div>
 
-        {/* The 3 Core Service Buckets */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-24">
+        {/* The 5 Core Service Buckets */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
           {/* Bucket 01: Multi-Tenant SaaS Backbones */}
           <div className="p-8 rounded-xl bg-[#141923] border border-[#1F2633] hover:border-[#0052FF] transition-all duration-300 flex flex-col justify-between group">
             <div>
@@ -272,6 +281,122 @@ export const Capabilities: React.FC = () => {
 
             <div className="pt-4 border-t border-[#1F2633] flex items-center justify-between">
               <span className="text-[10px] font-mono text-[#00D2FF]">SLA: 99.999% HIGH-AVAIL</span>
+              <button
+                onClick={scrollToBrief}
+                className="text-xs font-mono text-white group-hover:text-[#00D2FF] flex items-center gap-1.5 transition-colors"
+              >
+                <span>SPECIFY</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          </div>
+
+          {/* Bucket 04: Autonomous Workflow Automation & n8n */}
+          <div className="p-8 rounded-xl bg-[#141923] border border-[#1F2633] hover:border-[#00D2FF] transition-all duration-300 flex flex-col justify-between group">
+            <div>
+              <div className="flex items-center justify-between mb-6">
+                <div className="w-12 h-12 rounded-lg bg-[#0A0D12] border border-[#1F2633] flex items-center justify-center text-[#00D2FF] transition-colors">
+                  <Workflow className="w-6 h-6" />
+                </div>
+                <span className="text-xs font-mono font-bold tracking-widest text-[#00D2FF]">
+                  BUCKET // 04
+                </span>
+              </div>
+
+              <h3 className="text-xl font-bold text-white mb-3 tracking-tight">
+                Autonomous Workflow Automation &amp; n8n
+              </h3>
+
+              <p className="text-xs text-[#8A99AD] leading-relaxed mb-6">
+                Eliminate 90%+ of manual operational friction with self-healing, self-hosted n8n/Temporal
+                event meshes and autonomous AI agent tool pipelines.
+              </p>
+
+              <ul className="space-y-3 mb-8">
+                <li className="flex items-start gap-2.5 text-xs text-[#8A99AD]">
+                  <CheckCircle2 className="w-4 h-4 text-[#00D2FF] flex-shrink-0 mt-0.5" />
+                  <span>
+                    <strong className="text-white">Self-Hosted n8n &amp; Temporal:</strong> Private VPC
+                    orchestration nodes with zero per-task SaaS tax and unlimited executions.
+                  </span>
+                </li>
+                <li className="flex items-start gap-2.5 text-xs text-[#8A99AD]">
+                  <CheckCircle2 className="w-4 h-4 text-[#00D2FF] flex-shrink-0 mt-0.5" />
+                  <span>
+                    <strong className="text-white">Multi-System Event Sync:</strong> Real-time bi-directional
+                    pipelines across Stripe, CRM, PostgreSQL, and team communication.
+                  </span>
+                </li>
+                <li className="flex items-start gap-2.5 text-xs text-[#8A99AD]">
+                  <CheckCircle2 className="w-4 h-4 text-[#00D2FF] flex-shrink-0 mt-0.5" />
+                  <span>
+                    <strong className="text-white">AI Document &amp; Data Parsing:</strong> Automated invoice
+                    reconciliation, lead qualification, and structured LLM extraction.
+                  </span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="pt-4 border-t border-[#1F2633] flex items-center justify-between">
+              <span className="text-[10px] font-mono text-[#00D2FF]">MANUAL OPS REDUCTION: 90%+</span>
+              <button
+                onClick={scrollToBrief}
+                className="text-xs font-mono text-white group-hover:text-[#00D2FF] flex items-center gap-1.5 transition-colors"
+              >
+                <span>SPECIFY</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          </div>
+
+          {/* Bucket 05: Startup MVP-to-Scale Launchpad */}
+          <div className="p-8 rounded-xl bg-[#141923] border border-[#1F2633] hover:border-[#0052FF] transition-all duration-300 flex flex-col justify-between group md:col-span-2 lg:col-span-1">
+            <div>
+              <div className="flex items-center justify-between mb-6">
+                <div className="w-12 h-12 rounded-lg bg-[#0A0D12] border border-[#1F2633] flex items-center justify-center text-[#0052FF] group-hover:text-[#00D2FF] transition-colors">
+                  <Rocket className="w-6 h-6" />
+                </div>
+                <span className="text-xs font-mono font-bold tracking-widest text-[#00D2FF]">
+                  BUCKET // 05
+                </span>
+              </div>
+
+              <h3 className="text-xl font-bold text-white mb-3 tracking-tight">
+                Startup MVP-to-Scale Launchpad
+              </h3>
+
+              <p className="text-xs text-[#8A99AD] leading-relaxed mb-6">
+                Rapid 14-day production delivery for high-growth startups and venture teams with zero
+                technical debt and enterprise-grade distributed foundations.
+              </p>
+
+              <ul className="space-y-3 mb-8">
+                <li className="flex items-start gap-2.5 text-xs text-[#8A99AD]">
+                  <CheckCircle2 className="w-4 h-4 text-[#0052FF] flex-shrink-0 mt-0.5" />
+                  <span>
+                    <strong className="text-white">14-Day Production Release:</strong> Full-stack Next.js
+                    and distributed API scaffold with auth, billing, and database primitives.
+                  </span>
+                </li>
+                <li className="flex items-start gap-2.5 text-xs text-[#8A99AD]">
+                  <CheckCircle2 className="w-4 h-4 text-[#0052FF] flex-shrink-0 mt-0.5" />
+                  <span>
+                    <strong className="text-white">Zero Technical Debt:</strong> Engineered directly on
+                    clean modular architecture ready to scale from Seed to Series A.
+                  </span>
+                </li>
+                <li className="flex items-start gap-2.5 text-xs text-[#8A99AD]">
+                  <CheckCircle2 className="w-4 h-4 text-[#0052FF] flex-shrink-0 mt-0.5" />
+                  <span>
+                    <strong className="text-white">100% IP &amp; Code Handover:</strong> Clean TypeScript,
+                    Docker images, and CI/CD pipelines delivered directly to your repositories.
+                  </span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="pt-4 border-t border-[#1F2633] flex items-center justify-between">
+              <span className="text-[10px] font-mono text-[#00D2FF]">TIMELINE: 14 DAYS TO PROD</span>
               <button
                 onClick={scrollToBrief}
                 className="text-xs font-mono text-white group-hover:text-[#00D2FF] flex items-center gap-1.5 transition-colors"

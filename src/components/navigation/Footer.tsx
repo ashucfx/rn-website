@@ -147,15 +147,15 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
               </li>
               <li className="hover:text-white transition-colors cursor-default flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#0052FF]" />
-                Multi-Region K8s VPC Topology
+                Cloud &amp; Multi-Region DevOps
               </li>
               <li className="hover:text-white transition-colors cursor-default flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#00D2FF]" />
-                Human-in-the-Loop Governance
+                Workflow Automation &amp; n8n
               </li>
               <li className="hover:text-white transition-colors cursor-default flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#0052FF]" />
-                Zero-Trust HSM Key Custody
+                Startup MVP Launchpad
               </li>
             </ul>
           </div>
