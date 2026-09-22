@@ -37,10 +37,15 @@ const COMPLIANCE_LABELS: Record<string, string> = {
   standard_enterprise: "Standard Enterprise Zero-Trust",
 };
 
+function getBaseUrl(): string {
+  return process.env.NEXT_PUBLIC_SITE_URL || "https://theripplenexus.com";
+}
+
 /**
  * Lead Confirmation Email - Sent to the CTO / Technical Lead who submitted the brief.
  */
 export function generateLeadConfirmationEmail(data: BriefEmailData): string {
+  const baseUrl = getBaseUrl();
   const domainLabel = DOMAIN_LABELS[data.domain] || data.domain;
   const throughputLabel = THROUGHPUT_LABELS[data.throughput] || data.throughput;
   const complianceLabel = COMPLIANCE_LABELS[data.compliance] || data.compliance;
@@ -53,33 +58,45 @@ export function generateLeadConfirmationEmail(data: BriefEmailData): string {
   <title>Architectural Brief Receipt // RIPPLE NEXUS</title>
 </head>
 <body style="margin: 0; padding: 0; background-color: #0A0D12; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #FFFFFF; -webkit-font-smoothing: antialiased;">
-  <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: #0A0D12; padding: 32px 16px;">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: #0A0D12; padding: 36px 16px;">
     <tr>
       <td align="center">
         <!-- Master Container -->
-        <table width="100%" border="0" cellspacing="0" cellpadding="0" style="max-width: 600px; background-color: #141923; border: 1px solid #1F2633; border-radius: 12px; overflow: hidden; text-align: left;">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" style="max-width: 620px; background-color: #141923; border: 1px solid #1F2633; border-radius: 12px; overflow: hidden; text-align: left; box-shadow: 0 10px 40px rgba(0,0,0,0.8);">
           
-          <!-- Header Bar -->
+          <!-- Top Cyberpunk Accent Stripe -->
           <tr>
-            <td style="padding: 24px 32px; background-color: #0A0D12; border-bottom: 1px solid #1F2633;">
+            <td style="height: 3px; background: linear-gradient(90deg, #0052FF 0%, #00D2FF 50%, #0052FF 100%);"></td>
+          </tr>
+
+          <!-- Header Bar with Embedded Logo Lockup -->
+          <tr>
+            <td style="padding: 26px 32px; background-color: #0A0D12; border-bottom: 1px solid #1F2633;">
               <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
-                  <td>
+                  <td style="vertical-align: middle;">
+                    <!-- Brand Lockup Table -->
                     <table border="0" cellspacing="0" cellpadding="0">
                       <tr>
-                        <td style="font-size: 16px; font-weight: 800; letter-spacing: 0.18em; color: #FFFFFF; font-family: monospace;">
-                          RIPPLE NEXUS
+                        <td style="vertical-align: middle; padding-right: 14px;">
+                          <!-- Logo Mark -->
+                          <img src="${baseUrl}/assets/rn-mark.svg" alt="Ripple Nexus" width="38" height="38" style="display: block; border: 1px solid #1F2633; border-radius: 6px; background-color: #141923; padding: 4px;" />
                         </td>
-                        <td style="padding-left: 10px;">
-                          <span style="font-size: 10px; font-family: monospace; color: #00D2FF; background-color: #141923; border: 1px solid #1F2633; padding: 3px 8px; border-radius: 4px; letter-spacing: 0.05em;">
-                            48-HOUR SLA ACTIVE
-                          </span>
+                        <td style="vertical-align: middle;">
+                          <div style="font-size: 15px; font-weight: 800; letter-spacing: 0.18em; color: #FFFFFF; font-family: monospace;">
+                            RIPPLE NEXUS
+                          </div>
+                          <div style="font-size: 9px; font-family: monospace; color: #8A99AD; letter-spacing: 0.12em; text-transform: uppercase; margin-top: 2px;">
+                            SYSTEMS ARCHITECTURE &amp; AI INFRA
+                          </div>
                         </td>
                       </tr>
                     </table>
-                    <div style="font-size: 10px; font-family: monospace; color: #8A99AD; margin-top: 4px; letter-spacing: 0.05em;">
-                      SYSTEMS ARCHITECTURE &amp; PRIVATE AI INFRASTRUCTURE
-                    </div>
+                  </td>
+                  <td align="right" style="vertical-align: middle;">
+                    <span style="font-size: 10px; font-family: monospace; font-weight: bold; color: #00D2FF; background-color: #141923; border: 1px solid #0052FF; padding: 5px 10px; border-radius: 4px; letter-spacing: 0.08em; white-space: nowrap;">
+                      48-HOUR SLA ACTIVE
+                    </span>
                   </td>
                 </tr>
               </table>
@@ -90,7 +107,7 @@ export function generateLeadConfirmationEmail(data: BriefEmailData): string {
           <tr>
             <td style="padding: 32px;">
               <!-- Eyebrow Pill -->
-              <div style="display: inline-block; font-size: 11px; font-family: monospace; color: #00D2FF; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px;">
+              <div style="font-size: 11px; font-family: monospace; color: #00D2FF; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 12px;">
                 // INGESTION RECEIPT CONFIRMED
               </div>
 
@@ -106,15 +123,22 @@ export function generateLeadConfirmationEmail(data: BriefEmailData): string {
               <!-- Cryptographic Receipt Enclave -->
               <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: #0A0D12; border: 1px solid #1F2633; border-radius: 8px; margin-bottom: 24px;">
                 <tr>
-                  <td style="padding: 16px 20px;">
-                    <table width="100%" border="0" cellspacing="0" cellpadding="0" style="font-family: monospace; font-size: 11px; line-height: 1.8;">
+                  <td style="padding: 18px 20px;">
+                    <div style="font-size: 10px; font-family: monospace; color: #00D2FF; letter-spacing: 0.1em; margin-bottom: 12px; border-bottom: 1px solid #1F2633; padding-bottom: 6px;">
+                      // SYSTEM METADATA RECORD &amp; CRYPTOGRAPHIC SEAL
+                    </div>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" style="font-family: monospace; font-size: 11px; line-height: 1.85;">
                       <tr>
-                        <td style="color: #8A99AD; width: 40%;">RECORD_ID:</td>
+                        <td style="color: #8A99AD; width: 38%;">RECORD_ID:</td>
                         <td style="color: #00D2FF; font-weight: bold;">${escapeHtml(data.briefId)}</td>
                       </tr>
                       <tr>
                         <td style="color: #8A99AD;">ORGANIZATION:</td>
-                        <td style="color: #FFFFFF;">${escapeHtml(data.organization)}</td>
+                        <td style="color: #FFFFFF; font-weight: bold;">${escapeHtml(data.organization)}</td>
+                      </tr>
+                      <tr>
+                        <td style="color: #8A99AD;">LEAD_CONTACT:</td>
+                        <td style="color: #FFFFFF;">${escapeHtml(data.leadEmail)}</td>
                       </tr>
                       <tr>
                         <td style="color: #8A99AD;">TARGET_DOMAIN:</td>
@@ -129,6 +153,10 @@ export function generateLeadConfirmationEmail(data: BriefEmailData): string {
                         <td style="color: #FFFFFF;">${escapeHtml(complianceLabel)}</td>
                       </tr>
                       <tr>
+                        <td style="color: #8A99AD;">INGESTION_TIMESTAMP:</td>
+                        <td style="color: #8A99AD;">${escapeHtml(data.timestamp)}</td>
+                      </tr>
+                      <tr>
                         <td style="color: #8A99AD;">SLA_DELIVERY:</td>
                         <td style="color: #00D2FF; font-weight: bold;">48 HOURS GUARANTEED</td>
                       </tr>
@@ -139,40 +167,43 @@ export function generateLeadConfirmationEmail(data: BriefEmailData): string {
 
               <!-- Objectives Section -->
               <div style="font-size: 11px; font-family: monospace; color: #00D2FF; text-transform: uppercase; margin-bottom: 8px;">
-                // CAPTURED OBJECTIVE &amp; CONSTRAINTS
+                // CAPTURED OBJECTIVE &amp; ARCHITECTURAL CONSTRAINTS
               </div>
-              <div style="background-color: #0A0D12; border: 1px solid #1F2633; border-radius: 8px; padding: 16px; font-family: monospace; font-size: 12px; color: #8A99AD; line-height: 1.6; margin-bottom: 24px;">
+              <div style="background-color: #0A0D12; border: 1px solid #1F2633; border-radius: 8px; padding: 16px; font-family: monospace; font-size: 12px; color: #FFFFFF; line-height: 1.6; margin-bottom: 24px; white-space: pre-wrap;">
                 ${escapeHtml(data.coreObjective)}
               </div>
 
-              <!-- 4 Institutional Commitments -->
+              <!-- 3 Institutional Guarantees -->
               <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom: 24px;">
                 <tr>
-                  <td style="padding: 12px; background-color: #0A0D12; border: 1px solid #1F2633; border-radius: 6px;">
+                  <td style="padding: 12px 16px; background-color: #0A0D12; border: 1px solid #1F2633; border-radius: 6px;">
                     <div style="font-size: 11px; font-family: monospace; color: #0052FF; font-weight: bold; margin-bottom: 4px;">
-                      01 // 100% IP HANDOVER
+                      01 // 100% UNCONDITIONAL IP HANDOVER
                     </div>
                     <div style="font-size: 11px; color: #8A99AD; line-height: 1.4;">
-                      All delivered architectural schematics, code scaffolds, and infrastructure manifests belong 100% to you.
+                      All delivered architectural schematics, code scaffolds, and infrastructure manifests belong 100% to your enterprise.
                     </div>
                   </td>
                 </tr>
                 <tr><td style="height: 8px;"></td></tr>
                 <tr>
-                  <td style="padding: 12px; background-color: #0A0D12; border: 1px solid #1F2633; border-radius: 6px;">
+                  <td style="padding: 12px 16px; background-color: #0A0D12; border: 1px solid #1F2633; border-radius: 6px;">
                     <div style="font-size: 11px; font-family: monospace; color: #00D2FF; font-weight: bold; margin-bottom: 4px;">
-                      02 // DIRECT SENIOR ARCHITECT ENGAGEMENT
+                      02 // DIRECT PRINCIPAL ARCHITECT ENGAGEMENT
                     </div>
                     <div style="font-size: 11px; color: #8A99AD; line-height: 1.4;">
-                      Zero agency account managers or junior layers. Your brief is authored exclusively by Principal Systems Engineers.
+                      Zero agency account managers or junior layers. Your brief is authored exclusively by senior distributed systems engineers.
                     </div>
                   </td>
                 </tr>
               </table>
 
-              <p style="font-size: 12px; color: #8A99AD; line-height: 1.5; margin: 0;">
-                If you have additional architecture diagrams, repository links, or benchmark specs to append to this brief, simply reply directly to this transmission.
-              </p>
+              <!-- Action Link -->
+              <div style="text-align: center; margin: 28px 0 12px 0;">
+                <a href="${baseUrl}" style="display: inline-block; background-color: #0052FF; color: #FFFFFF; text-decoration: none; padding: 12px 28px; border-radius: 6px; font-size: 12px; font-family: monospace; font-weight: bold; letter-spacing: 0.08em; box-shadow: 0 0 20px rgba(0,82,255,0.45);">
+                  VISIT RIPPLE NEXUS TERMINAL &rarr;
+                </a>
+              </div>
             </td>
           </tr>
 
@@ -183,9 +214,9 @@ export function generateLeadConfirmationEmail(data: BriefEmailData): string {
                 <tr>
                   <td>
                     <div>&copy; ${new Date().getFullYear()} RIPPLE NEXUS. ALL RIGHTS RESERVED.</div>
-                    <div style="color: #00D2FF; margin-top: 2px;">STRICT ZERO-TRUST PRIVACY ENCLAVE // ZERO MODEL TRAINING RETENTION</div>
+                    <div style="color: #00D2FF; margin-top: 3px;">STRICT ZERO-TRUST PRIVACY ENCLAVE // ZERO MODEL TRAINING RETENTION</div>
                   </td>
-                  <td align="right">
+                  <td align="right" style="vertical-align: middle;">
                     <span style="color: #00D2FF;">STATUS: NOMINAL</span>
                   </td>
                 </tr>
@@ -205,6 +236,7 @@ export function generateLeadConfirmationEmail(data: BriefEmailData): string {
  * Internal Engineering Alert Email - Dispatched immediately to engineering architects.
  */
 export function generateInternalEngineeringAlertEmail(data: BriefEmailData): string {
+  const baseUrl = getBaseUrl();
   const domainLabel = DOMAIN_LABELS[data.domain] || data.domain;
   const throughputLabel = THROUGHPUT_LABELS[data.throughput] || data.throughput;
   const complianceLabel = COMPLIANCE_LABELS[data.compliance] || data.compliance;
@@ -216,30 +248,50 @@ export function generateInternalEngineeringAlertEmail(data: BriefEmailData): str
   <title>CRITICAL ACTION: New 48-Hour Brief [${escapeHtml(data.briefId)}]</title>
 </head>
 <body style="margin: 0; padding: 0; background-color: #0A0D12; font-family: monospace; color: #FFFFFF;">
-  <div style="max-width: 640px; margin: 24px auto; background-color: #141923; border: 1px solid #0052FF; border-radius: 8px; padding: 24px;">
-    <div style="color: #00D2FF; font-size: 12px; font-weight: bold; margin-bottom: 12px;">
-      // RIPPLE NEXUS INGESTION DISPATCH // 48-HOUR SLA TRIGGERED
-    </div>
+  <div style="max-width: 640px; margin: 24px auto; background-color: #141923; border: 1px solid #0052FF; border-radius: 8px; padding: 24px; box-shadow: 0 10px 40px rgba(0,0,0,0.8);">
+    
+    <!-- Header with Monogram -->
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid #1F2633;">
+      <tr>
+        <td style="vertical-align: middle;">
+          <table border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td style="padding-right: 10px;">
+                <img src="${baseUrl}/assets/rn-mark.svg" alt="Ripple Nexus" width="32" height="32" style="display: block; border-radius: 4px; background: #0A0D12; border: 1px solid #1F2633; padding: 2px;" />
+              </td>
+              <td>
+                <span style="font-size: 14px; font-weight: bold; color: #FFFFFF; letter-spacing: 0.14em;">RIPPLE NEXUS</span>
+                <div style="color: #00D2FF; font-size: 11px;">// INGESTION ENGINE // 48-HOUR SLA TRIGGERED</div>
+              </td>
+            </tr>
+          </table>
+        </td>
+        <td align="right" style="vertical-align: middle;">
+          <span style="color: #FF4444; font-weight: bold; font-size: 11px; background-color: #2A1015; border: 1px solid #FF4444; padding: 3px 8px; border-radius: 4px;">HIGH PRIORITY</span>
+        </td>
+      </tr>
+    </table>
 
     <h2 style="font-size: 18px; color: #FFFFFF; margin: 0 0 16px 0;">
       New Architectural Brief: ${escapeHtml(data.organization)}
     </h2>
 
-    <div style="background-color: #0A0D12; border: 1px solid #1F2633; border-radius: 6px; padding: 16px; font-size: 12px; line-height: 1.8; margin-bottom: 16px;">
-      <div><strong style="color: #8A99AD;">RECORD_ID:</strong> <span style="color: #00D2FF;">${escapeHtml(data.briefId)}</span></div>
-      <div><strong style="color: #8A99AD;">LEAD_CONTACT:</strong> <a href="mailto:${escapeHtml(data.leadEmail)}" style="color: #FFFFFF;">${escapeHtml(data.leadEmail)}</a></div>
+    <div style="background-color: #0A0D12; border: 1px solid #1F2633; border-radius: 6px; padding: 16px; font-size: 12px; line-height: 1.85; margin-bottom: 16px;">
+      <div><strong style="color: #8A99AD;">RECORD_ID:</strong> <span style="color: #00D2FF; font-weight: bold;">${escapeHtml(data.briefId)}</span></div>
+      <div><strong style="color: #8A99AD;">LEAD_CONTACT:</strong> <a href="mailto:${escapeHtml(data.leadEmail)}" style="color: #00D2FF;">${escapeHtml(data.leadEmail)}</a></div>
       <div><strong style="color: #8A99AD;">ORGANIZATION:</strong> ${escapeHtml(data.organization)}</div>
       <div><strong style="color: #8A99AD;">DOMAIN:</strong> ${escapeHtml(domainLabel)}</div>
       <div><strong style="color: #8A99AD;">THROUGHPUT:</strong> ${escapeHtml(throughputLabel)}</div>
       <div><strong style="color: #8A99AD;">COMPLIANCE:</strong> ${escapeHtml(complianceLabel)}</div>
       <div><strong style="color: #8A99AD;">INGESTION_TIMESTAMP:</strong> ${escapeHtml(data.timestamp)}</div>
+      <div><strong style="color: #8A99AD;">SLA_DEADLINE:</strong> <span style="color: #00D2FF; font-weight: bold;">48 Hours</span></div>
     </div>
 
     <div style="color: #00D2FF; font-size: 11px; margin-bottom: 6px;">// OBJECTIVE &amp; SYSTEM BOTTLENECK SPEC:</div>
     <div style="background-color: #0A0D12; border: 1px solid #1F2633; border-radius: 6px; padding: 16px; font-size: 12px; color: #FFFFFF; line-height: 1.6; white-space: pre-wrap; margin-bottom: 20px;">${escapeHtml(data.coreObjective)}</div>
 
-    <div style="font-size: 11px; color: #8A99AD; border-top: 1px solid #1F2633; pt-3; padding-top: 12px;">
-      ACTION REQUIRED: Principal Systems Architect must synthesize and dispatch written brief before 48-hour SLA deadline.
+    <div style="font-size: 11px; color: #8A99AD; border-top: 1px solid #1F2633; padding-top: 12px;">
+      ACTION REQUIRED: Principal Systems Architect must synthesize and dispatch written architectural specification before 48-hour SLA expiration.
     </div>
   </div>
 </body>
