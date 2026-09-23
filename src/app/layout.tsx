@@ -25,8 +25,8 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: "RIPPLE NEXUS | Systems Architecture & Private AI Infrastructure",
-    template: "%s // RIPPLE NEXUS",
+    default: "Ripple Nexus | Systems Architecture & Private AI Infrastructure",
+    template: "%s | Ripple Nexus",
   },
   description:
     "Enterprise distributed systems engineering for multi-tenant SaaS backbones, deterministic AI pipelines, cloud DevOps, and autonomous workflow automation. Sub-25ms latency, zero data breaches, 100% IP handover, and 48-hour written architectural briefs.",
@@ -57,8 +57,8 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://theripplenexus.com",
-    siteName: "RIPPLE NEXUS Platform",
-    title: "RIPPLE NEXUS | Systems Architecture & Private AI Infrastructure",
+    siteName: "Ripple Nexus",
+    title: "Ripple Nexus | Systems Architecture & Private AI Infrastructure",
     description:
       "Enterprise systems engineering for multi-tenant SaaS backbones and deterministic AI pipelines. Sub-25ms latency, zero breaches, 100% IP handover.",
     images: [
@@ -66,13 +66,13 @@ export const metadata: Metadata = {
         url: "/assets/rn-lockup-horizontal.svg",
         width: 1100,
         height: 240,
-        alt: "RIPPLE NEXUS Corporate Lockup",
+        alt: "Ripple Nexus Corporate Lockup",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "RIPPLE NEXUS | Systems Architecture & Private AI Infrastructure",
+    title: "Ripple Nexus | Systems Architecture & Private AI Infrastructure",
     description:
       "Enterprise systems engineering for multi-tenant SaaS backbones and deterministic AI pipelines. Sub-25ms latency, zero breaches, 100% IP handover.",
     images: ["/assets/rn-lockup-horizontal.svg"],
