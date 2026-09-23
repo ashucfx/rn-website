@@ -2,8 +2,8 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "RIPPLE NEXUS | Systems Architecture & Private AI Infrastructure",
-    short_name: "RIPPLE NEXUS",
+    name: "Ripple Nexus | Systems Architecture & Private AI Infrastructure",
+    short_name: "Ripple Nexus",
     description:
       "Enterprise systems engineering for multi-tenant SaaS backbones and deterministic AI pipelines. Sub-25ms latency, zero breaches, 100% IP handover.",
     start_url: "/",
