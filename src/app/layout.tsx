@@ -24,29 +24,41 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Ripple Nexus | Production Systems Architecture & Private AI Infrastructure",
+  title: {
+    default: "RIPPLE NEXUS | Systems Architecture & Private AI Infrastructure",
+    template: "%s // RIPPLE NEXUS",
+  },
   description:
-    "We engineer multi-tenant SaaS backbones and private AI infrastructure. Deterministic pipelines, sub-25ms latency, zero data breaches, and 100% intellectual property ownership.",
+    "Enterprise distributed systems engineering for multi-tenant SaaS backbones, deterministic AI pipelines, cloud DevOps, and autonomous workflow automation. Sub-25ms latency, zero data breaches, 100% IP handover, and 48-hour written architectural briefs.",
   keywords: [
+    "Ripple Nexus",
     "Systems Architecture",
     "Private AI Infrastructure",
-    "Multi-Tenant SaaS",
-    "Deterministic RAG",
-    "Kubernetes VPC",
-    "High Throughput",
-    "Hardware HSM",
+    "Multi-Tenant SaaS Backbone",
+    "Deterministic Vector RAG",
+    "Autonomous Agentic Workflows",
+    "Kubernetes Multi-Cloud DevOps",
+    "Self-Hosted n8n Automation",
+    "Startup MVP Launchpad",
+    "SOC 2 Type II Architecture",
+    "HIPAA Ready Infrastructure",
+    "Hardware HSM KMS Custody",
+    "48-Hour Architectural Brief",
     "Sub-25ms Latency",
   ],
-  authors: [{ name: "Ripple Nexus Enterprise Engineering" }],
+  authors: [{ name: "Ripple Nexus Enterprise Engineering", url: "https://theripplenexus.com" }],
   creator: "Ripple Nexus",
   publisher: "Ripple Nexus",
   metadataBase: new URL("https://theripplenexus.com"),
+  alternates: {
+    canonical: "https://theripplenexus.com",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://theripplenexus.com",
-    siteName: "Ripple Nexus Enterprise Platform",
-    title: "Ripple Nexus | Production Systems & Private AI Infrastructure",
+    siteName: "RIPPLE NEXUS Platform",
+    title: "RIPPLE NEXUS | Systems Architecture & Private AI Infrastructure",
     description:
       "Enterprise systems engineering for multi-tenant SaaS backbones and deterministic AI pipelines. Sub-25ms latency, zero breaches, 100% IP handover.",
     images: [
@@ -54,13 +66,13 @@ export const metadata: Metadata = {
         url: "/assets/rn-lockup-horizontal.svg",
         width: 1100,
         height: 240,
-        alt: "Ripple Nexus Corporate Lockup",
+        alt: "RIPPLE NEXUS Corporate Lockup",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ripple Nexus | Production Systems & Private AI Infrastructure",
+    title: "RIPPLE NEXUS | Systems Architecture & Private AI Infrastructure",
     description:
       "Enterprise systems engineering for multi-tenant SaaS backbones and deterministic AI pipelines. Sub-25ms latency, zero breaches, 100% IP handover.",
     images: ["/assets/rn-lockup-horizontal.svg"],
@@ -68,36 +80,150 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
   icons: {
-    icon: "/assets/rn-mark.svg",
-    shortcut: "/assets/rn-mark.svg",
-    apple: "/assets/rn-mark.svg",
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/assets/rn-mark.svg", type: "image/svg+xml" },
+    ],
+    shortcut: "/icon.svg",
+    apple: "/apple-icon.svg",
   },
 };
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "Ripple Nexus",
-  url: "https://theripplenexus.com",
-  logo: "https://theripplenexus.com/assets/rn-mark.svg",
-  description:
-    "Enterprise distributed systems engineering, multi-tenant SaaS backbones, and private deterministic AI infrastructure.",
-  knowsAbout: [
-    "Distributed Systems Architecture",
-    "Private AI Infrastructure",
-    "Deterministic Vector RAG",
-    "Multi-Region Kubernetes VPC",
-    "Hardware HSM KMS Custody",
-  ],
-  offers: {
-    "@type": "Offer",
-    name: "48-Hour Written Architectural Brief",
+const structuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "RIPPLE NEXUS",
+    alternateName: ["Ripple Nexus Systems", "Ripple Nexus Architecture"],
+    url: "https://theripplenexus.com",
+    logo: "https://theripplenexus.com/assets/rn-mark.svg",
     description:
-      "Comprehensive actionable systems architecture specification delivered within 48 hours under mutual enterprise NDA.",
+      "Enterprise distributed systems engineering, multi-tenant SaaS backbones, and private deterministic AI infrastructure.",
+    contactPoint: {
+      "@type": "ContactPoint",
+      email: "info@theripplenexus.com",
+      contactType: "technical engineering support",
+      availableLanguage: ["English"],
+    },
+    knowsAbout: [
+      "Distributed Systems Architecture",
+      "Private AI Infrastructure",
+      "Deterministic Vector RAG",
+      "Multi-Region Kubernetes VPC",
+      "Hardware HSM KMS Custody",
+      "Autonomous Workflow Automation",
+      "Multi-Tenant Database Partitioning",
+    ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "RIPPLE NEXUS Engineering Domains",
+      itemListElement: [
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Multi-Tenant Distributed SaaS Platforms",
+            description: "High-throughput database isolation, granular RBAC, sub-50ms global latency.",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Deterministic AI & Agentic Automation Systems",
+            description: "Hallucination-free LLM pipelines, autonomous multi-agent swarms, private VPC deployment.",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Enterprise Cloud Architecture & Kubernetes DevOps",
+            description: "Zero-trust multi-cloud infrastructure, Terraform IaC, auto-healing container clusters.",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Autonomous Workflow Automation & n8n Systems",
+            description: "Self-hosted dedicated n8n instances, 90%+ manual process elimination, webhook micro-routers.",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Startup MVP-to-Scale Launchpad",
+            description: "Production MVP deployment in 3–4 weeks for early-stage founders and creators.",
+          },
+        },
+      ],
+    },
   },
-};
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "RIPPLE NEXUS",
+    url: "https://theripplenexus.com",
+    description: "Production Systems Architecture & Private AI Infrastructure",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What is Ripple Nexus?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Ripple Nexus is an enterprise engineering practice specializing in high-throughput multi-tenant SaaS backbones, deterministic private AI infrastructure, multi-cloud Kubernetes DevOps, and autonomous workflow automation.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What is the 48-Hour Written Architectural Brief Commitment?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Upon submitting a brief via the Ripple Nexus engagement terminal, our Principal Distributed Systems Architects synthesize and deliver a comprehensive 8-to-12 page written architecture specification detailing database schemas, event mesh topologies, latency projections, and cost modeling within 48 hours.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Who owns the intellectual property and code produced by Ripple Nexus?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Clients receive 100% unconditional intellectual property ownership. All deliverables—including TypeScript source code, Dockerfiles, Kubernetes manifests, and Terraform scripts—belong entirely to the client with zero vendor lock-in.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How does Ripple Nexus prevent LLM hallucinations and data leakage?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Ripple Nexus deploys deterministic vector RAG pipelines with private VPC model deployments, strict schema validation, and Human-in-the-Loop (HITL) checkpoints. Zero customer code or data is ever used to train public foundation models.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What compliance regimes are supported out of the box?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Architectures are engineered to satisfy SOC 2 Type II, HIPAA, ISO 27001, PCI-DSS, and FIPS 140-2 Level 3 Hardware Security Module (HSM) key custody.",
+        },
+      },
+    ],
+  },
+];
 
 export default function RootLayout({
   children,
@@ -107,11 +233,15 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark scroll-smooth" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/assets/rn-mark.svg" type="image/svg+xml" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/apple-icon.svg" />
+        {structuredData.map((schema, index) => (
+          <script
+            key={index}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+          />
+        ))}
       </head>
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} antialiased bg-[#0A0D12] text-white selection:bg-[#0052FF] selection:text-white min-h-screen flex flex-col`}

@@ -137,25 +137,50 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
               {"// CORE DOMAINS"}
             </h4>
             <ul className="space-y-2 text-xs text-[#8A99AD] font-mono">
-              <li className="hover:text-white transition-colors cursor-default flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#0052FF]" />
-                Multi-Tenant SaaS Backbones
+              <li>
+                <a
+                  href="/services/multi-tenant-saas"
+                  className="hover:text-white transition-colors flex items-center gap-2 group"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#0052FF] group-hover:bg-[#00D2FF] transition-colors" />
+                  <span>Multi-Tenant SaaS Backbones</span>
+                </a>
               </li>
-              <li className="hover:text-white transition-colors cursor-default flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#00D2FF]" />
-                Deterministic AI &amp; Vector RAG
+              <li>
+                <a
+                  href="/services/deterministic-ai"
+                  className="hover:text-white transition-colors flex items-center gap-2 group"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#00D2FF] transition-colors" />
+                  <span>Deterministic AI &amp; Vector RAG</span>
+                </a>
               </li>
-              <li className="hover:text-white transition-colors cursor-default flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#0052FF]" />
-                Cloud &amp; Multi-Region DevOps
+              <li>
+                <a
+                  href="/services/cloud-kubernetes"
+                  className="hover:text-white transition-colors flex items-center gap-2 group"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#0052FF] group-hover:bg-[#00D2FF] transition-colors" />
+                  <span>Cloud &amp; Multi-Region DevOps</span>
+                </a>
               </li>
-              <li className="hover:text-white transition-colors cursor-default flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#00D2FF]" />
-                Workflow Automation &amp; n8n
+              <li>
+                <a
+                  href="/services/workflow-automation"
+                  className="hover:text-white transition-colors flex items-center gap-2 group"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#00D2FF] transition-colors" />
+                  <span>Workflow Automation &amp; n8n</span>
+                </a>
               </li>
-              <li className="hover:text-white transition-colors cursor-default flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#0052FF]" />
-                Startup MVP Launchpad
+              <li>
+                <a
+                  href="/services/startup-launchpad"
+                  className="hover:text-white transition-colors flex items-center gap-2 group"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#0052FF] group-hover:bg-[#00D2FF] transition-colors" />
+                  <span>Startup MVP Launchpad</span>
+                </a>
               </li>
             </ul>
           </div>
