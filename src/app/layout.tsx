@@ -61,21 +61,15 @@ export const metadata: Metadata = {
     title: "Ripple Nexus | Systems Architecture & Private AI Infrastructure",
     description:
       "Enterprise systems engineering for multi-tenant SaaS backbones and deterministic AI pipelines. Sub-25ms latency, zero breaches, 100% IP handover.",
-    images: [
-      {
-        url: "/assets/rn-lockup-horizontal.svg",
-        width: 1100,
-        height: 240,
-        alt: "Ripple Nexus Corporate Lockup",
-      },
-    ],
+    // opengraph-image.tsx generates the canonical 1200×630 PNG at build time.
+    // Do NOT specify `images` here — an explicit array would shadow that file.
   },
   twitter: {
     card: "summary_large_image",
     title: "Ripple Nexus | Systems Architecture & Private AI Infrastructure",
     description:
       "Enterprise systems engineering for multi-tenant SaaS backbones and deterministic AI pipelines. Sub-25ms latency, zero breaches, 100% IP handover.",
-    images: ["/assets/rn-lockup-horizontal.svg"],
+    // twitter-image is inherited from opengraph-image.tsx — no override needed.
   },
   robots: {
     index: true,
@@ -88,13 +82,11 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  // icon.tsx and apple-icon.tsx generate the canonical PNGs.
+  // Listing them here as hints keeps head tags tidy; sizes are injected by Next.js.
   icons: {
-    icon: [
-      { url: "/icon.svg", type: "image/svg+xml" },
-      { url: "/assets/rn-mark.svg", type: "image/svg+xml" },
-    ],
-    shortcut: "/icon.svg",
-    apple: "/apple-icon.svg",
+    icon: [{ url: "/icon", type: "image/png", sizes: "32x32" }],
+    apple: [{ url: "/apple-icon", type: "image/png", sizes: "180x180" }],
   },
 };
 
@@ -233,13 +225,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark scroll-smooth" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/apple-icon.svg" />
         {structuredData.map((schema, index) => (
           <script
             key={index}
             type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }}
           />
         ))}
       </head>
