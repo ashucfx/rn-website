@@ -11,7 +11,48 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://theripplenexus.com/services/multi-tenant-saas",
   },
+  openGraph: {
+    type: "website",
+    url: "https://theripplenexus.com/services/multi-tenant-saas",
+    siteName: "Ripple Nexus",
+    title: "Multi-Tenant Distributed SaaS Platform Engineering | Ripple Nexus",
+    description:
+      "High-throughput multi-tenant SaaS architecture. Row-level isolation, granular RBAC, sub-50ms global latency, SOC 2 Type II compliance.",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Multi-Tenant Distributed SaaS Platform Engineering | Ripple Nexus",
+    description:
+      "High-throughput multi-tenant SaaS architecture. Row-level isolation, granular RBAC, sub-50ms global latency, SOC 2 Type II compliance.",
+  },
 };
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://theripplenexus.com",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Services",
+      item: "https://theripplenexus.com/#capabilities",
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: "Multi-Tenant Distributed SaaS Platform Engineering",
+      item: "https://theripplenexus.com/services/multi-tenant-saas",
+    },
+  ],
+};
+
 
 export default function MultiTenantSaaSPage() {
   return (
@@ -19,6 +60,10 @@ export default function MultiTenantSaaSPage() {
       <Navbar />
 
       <main className="flex-grow pt-28 pb-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto w-full">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c") }}
+        />
         {/* Breadcrumb Navigation */}
         <div className="flex items-center gap-2 text-xs font-mono text-[#8A99AD] mb-8">
           <Link href="/" className="hover:text-white transition-colors flex items-center gap-1">

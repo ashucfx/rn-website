@@ -11,7 +11,48 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://theripplenexus.com/services/deterministic-ai",
   },
+  openGraph: {
+    type: "website",
+    url: "https://theripplenexus.com/services/deterministic-ai",
+    siteName: "Ripple Nexus",
+    title: "Deterministic AI & Agentic Automation Systems | Ripple Nexus",
+    description:
+      "Hallucination-free vector RAG pipelines, autonomous multi-agent swarms, and private VPC AI deployment. Zero public model training.",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Deterministic AI & Agentic Automation Systems | Ripple Nexus",
+    description:
+      "Hallucination-free vector RAG pipelines, autonomous multi-agent swarms, and private VPC AI deployment. Zero public model training.",
+  },
 };
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://theripplenexus.com",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Services",
+      item: "https://theripplenexus.com/#capabilities",
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: "Deterministic AI & Agentic Automation Systems Engineering",
+      item: "https://theripplenexus.com/services/deterministic-ai",
+    },
+  ],
+};
+
 
 export default function DeterministicAIPage() {
   return (
@@ -19,6 +60,10 @@ export default function DeterministicAIPage() {
       <Navbar />
 
       <main className="flex-grow pt-28 pb-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto w-full">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c") }}
+        />
         {/* Breadcrumb Navigation */}
         <div className="flex items-center gap-2 text-xs font-mono text-[#8A99AD] mb-8">
           <Link href="/" className="hover:text-white transition-colors flex items-center gap-1">

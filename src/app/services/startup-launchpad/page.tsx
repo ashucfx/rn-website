@@ -11,7 +11,48 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://theripplenexus.com/services/startup-launchpad",
   },
+  openGraph: {
+    type: "website",
+    url: "https://theripplenexus.com/services/startup-launchpad",
+    siteName: "Ripple Nexus",
+    title: "Startup MVP-to-Scale Launchpad | Ripple Nexus",
+    description:
+      "From concept to live production in 3–4 weeks. Production-hardened Next.js, PostgreSQL, Stripe billing, and AI-ready architecture for Series A+.",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Startup MVP-to-Scale Launchpad | Ripple Nexus",
+    description:
+      "From concept to live production in 3–4 weeks. Production-hardened Next.js, PostgreSQL, Stripe billing, and AI-ready architecture for Series A+.",
+  },
 };
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://theripplenexus.com",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Services",
+      item: "https://theripplenexus.com/#capabilities",
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: "Startup MVP-to-Scale Launchpad",
+      item: "https://theripplenexus.com/services/startup-launchpad",
+    },
+  ],
+};
+
 
 export default function StartupLaunchpadPage() {
   return (
@@ -19,6 +60,10 @@ export default function StartupLaunchpadPage() {
       <Navbar />
 
       <main className="flex-grow pt-28 pb-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto w-full">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c") }}
+        />
         {/* Breadcrumb Navigation */}
         <div className="flex items-center gap-2 text-xs font-mono text-[#8A99AD] mb-8">
           <Link href="/" className="hover:text-white transition-colors flex items-center gap-1">

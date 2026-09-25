@@ -11,7 +11,48 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://theripplenexus.com/services/workflow-automation",
   },
+  openGraph: {
+    type: "website",
+    url: "https://theripplenexus.com/services/workflow-automation",
+    siteName: "Ripple Nexus",
+    title: "Autonomous Workflow Automation & n8n Enterprise Systems | Ripple Nexus",
+    description:
+      "Self-hosted n8n, 90%+ manual task elimination, webhook micro-routers, and bi-directional CRM/ERP sync with zero SaaS execution tax.",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Autonomous Workflow Automation & n8n Enterprise Systems | Ripple Nexus",
+    description:
+      "Self-hosted n8n, 90%+ manual task elimination, webhook micro-routers, and bi-directional CRM/ERP sync with zero SaaS execution tax.",
+  },
 };
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://theripplenexus.com",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Services",
+      item: "https://theripplenexus.com/#capabilities",
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: "Autonomous Workflow Automation & n8n Enterprise Systems",
+      item: "https://theripplenexus.com/services/workflow-automation",
+    },
+  ],
+};
+
 
 export default function WorkflowAutomationPage() {
   return (
@@ -19,6 +60,10 @@ export default function WorkflowAutomationPage() {
       <Navbar />
 
       <main className="flex-grow pt-28 pb-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto w-full">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c") }}
+        />
         {/* Breadcrumb Navigation */}
         <div className="flex items-center gap-2 text-xs font-mono text-[#8A99AD] mb-8">
           <Link href="/" className="hover:text-white transition-colors flex items-center gap-1">
